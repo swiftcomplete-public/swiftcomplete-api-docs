@@ -1,0 +1,757 @@
+# swiftcomplete llms.txt
+
+## **Swiftcomplete SwiftLookup API (v1)**
+
+The **SwiftLookup API** by Swiftcomplete is a RESTful API that provides fast, accurate postal address autocomplete and validation. It supports searching for traditional addresses, what3words addresses, postcodes, and more—returning precise and structured address suggestions in real time as users type. It is ideal for improving form accuracy, reducing input errors, and enhancing location-related UX across web and mobile platforms.
+
+---
+
+**General Notes:**
+
+- **Base URL:** https://api.swiftcomplete.com/v1
+- **Authentication:** API requests must include a valid API key as a query parameter (key=xxxx). You can generate a key via your [Swiftcomplete account](https://www.swiftcomplete.com/account/api)’s API section.
+- **Error Handling:**
+    - Returns standard HTTP status codes: 200, 400, 401, 403.
+    - A structured JSON object is returned for errors, including:
+        - parameter: the affected query param
+        - description: human-readable explanation
+        - resolutionExamples: suggestions for fixing the issue
+- **Quota and Usage Limits:**
+    - Usage plans vary (free vs. paid)
+    - Free trials are limited and return a 403 when expired
+    - Rate limits and quotas per plan are enforced; exceeding them leads to error responses (likely 429)
+- **Live Demo:** [https://www.swiftcomplete.com/](https://www.swiftcomplete.com/)
+
+---
+
+## 📚 API Documentation
+
+- [API Overview](https://www.docs.swiftcomplete.com/openapi.yaml)
+- [LLMs Text](https://www.docs.swiftcomplete.com/llms.txt)
+- [LLMs Full Text](https://www.docs.swiftcomplete.com/llms-full.txt)
+- [JavaScript Searchbox Integration](https://www.notion.so/Swiftcomplete-SwiftLookup-API-Javascript-1a066db17f3b8076bc67f00c1ca24742?pvs=21)
+- [WooCommerce Integration](https://www.notion.so/WooCommerce-plugin-for-Swiftcomplete-1a466db17f3b8018bc4ce65f85f6c852?pvs=4)
+- [BigCommerce Integration](https://www.notion.so/BigCommerce-Integration-for-Swiftcomplete-1d666db17f3b80e9bfceef1d64bea34d?pvs=4)
+
+---
+
+### **Endpoints**
+
+**`/swiftlookup/`**
+
+- **Description:** Provides real-time address, postcode, and what3words suggestions based on user input.
+- **Method:** `GET`
+- **Parameters:**
+    - **`key`** (required, string, query): API key for Swiftcomplete SwiftLookup.
+    - **`text`** (optional, string, query): A full or partial search term such as a postcode, street, city or what3words address.
+    - **`biasTowards`** (optional, string, query): The API will prioritize results near your approximate location (determined by your IP address) if this parameter is not provided. Either a what3words location (only if what3words has been enabled on this API key, in the format "///word1.word2.word3") or a WGS84 coordinate (in the format "latitude,longitude").
+    - **`container`** (optional, string, query): Restricts the search to a specific container (e.g., traditional address, postcode, coordinates). Examples: "V1;65|ALFRED Road|LONDON|W2;51.521198;-0.196309"
+    - **`searchFor`** (optional, string, query): A comma-separated list of result types to filter results. Type of data to search for: "address", "what3words", "place", "road", "transit". Examples: "what3words,address,place"
+    - **`countries`** (optional, string, query): Comma-separated list of ISO 316601 alpha-2 country codes to restrict search within. If the parameter is not provided the API will search for all the available countries. Examples: "gb"
+    - **`maxDistance`** (optional, string, query): Limits the search to a maximum distance (in meters) from the biasTowards location. Examples: "-1"
+    - **`maxResults`** (optional, string, query): Maximum number of results to display (in general are between 1-5)
+        - 5 (for traditional address),
+        - 3 (for what3words address),
+        - 100 (for container of traditional address)
+        Note: If the results are more than `maxResults=100` than `pageFrom` parameter needs to be used to loop the results per 100 records.
+    - **`populateIndex`** (optional, string, query):  Index for populating the autocomplete field. Used to obtain detailed information about a result in the response array. Examples: "1"
+    - **`populateLineCount`** (optional, string, query):  Number of lines of the full address. Max 7.
+    - **`distanceUnits`** (optional, string, query): Unit of measurement for distance display.
+        - `metric` → Return distance in kilometres, unless under 1km in which case metres are returned
+        - `imperial` → Return distance in miles, unless under 0.1 miles in which case feet are returned
+        - `km`
+        - `feet`
+        - `miles`
+    - **`groupResults`** (optional, boolean, query): Used when nothing is being typed on the search field. Only when the query is empty. Examples: "true"
+    - **`lineFormat0`** - **`lineFormat6`** (optional, string, query): Line formatting for the full address selected by the populateIndex. Examples: "Company", "SubBuilding, BuildingName", etc.
+    - **`pageFrom`** (optional, string, query): Specifies the starting index for paginated results. Examples: "2"
+- **Errors:**
+    
+    The OpenAPI specification defines the following error responses for the `/swiftlookup/` endpoint:
+    
+    - Error object:
+        - `parameter`: affected parameter
+        - `description`: human-readable issue
+        - `resolutionExamples`: suggested fixes
+    
+    | HTTP Code | Description |
+    | --- | --- |
+    | 400 | Invalid w3w bias input |
+    | 400 | Incorrect `biasTowards` format |
+    | 400 | `maxResults` is invalid |
+    | 401 | No API key provided |
+    | 403 | Free tier access expired |
+    | 429 | Rate limits and quotas per plan are enforced; exceeding them leads to error responses |
+- **Quota and Rate Limiting:**
+    - Based on pricing tier
+    - Free trials expire (403)
+    - Rate limits per plan (429 when exceeded)
+- **API Usage:**
+    - How frequently is the API being called?: Called on each user keystroke in autocomplete fields. Addresses have been validated with an average latency of 6ms.
+    - What are the key parameters being used in the API calls?: key(required), text(required??), biasTowards, container, searchFor, countries, maxDistance, maxResults, populateIndex, populateLineCount, distanceUnits, groupResults, lineFormat0-6, pageFrom.
+    - Are there any specific considerations or optimisations for API usage?
+        - Use populateIndex to resolve full address only after user selects a result
+        - Minimise repeated calls by delaying input triggers
+        - Bias towards known coordinates and what3words address to improve relevance
+        - If the results are more than `maxResults=100` than `pageFrom` parameter needs to be used to loop the results per 100 records.
+
+# UI Components
+
+Source: [https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466db17f3b80a18a63dced29d4cfb5](https://www.notion.so/1a466db17f3b80a18a63dced29d4cfb5?pvs=21)
+
+## 1. JavaScript Searchbox & Autocomplete
+
+- **URL**: [https://swiftcomplete.notion.site/JavaScript-Searchbox-Autocomplete-12345abcdefg](https://swiftcomplete.notion.site/JavaScript-Searchbox-Autocomplete-12345abcdefg)
+- **Description**: Learn how to integrate the Swiftcomplete SwiftLookup JavaScript component into a website. Covers setting up the API key, initialising the control, setting parameters such as `searchFor`, `populateLineFormat`, and handling custom events like `swiftcomplete:swiftlookup:selected`. Useful for developers integrating location search into web platforms.
+
+## 2. WooCommerce Address Autocomplete
+
+- **URL**: [https://swiftcomplete.notion.site/WooCommerce-Address-Autocomplete-12345abcdefg](https://swiftcomplete.notion.site/WooCommerce-Address-Autocomplete-12345abcdefg)
+- **Description**: A step-by-step guide to integrating Swiftcomplete address autocomplete into WooCommerce checkout forms. Includes plugin setup, JavaScript binding, overriding default WooCommerce address fields, and customising `lineFormat` to include what3words if enabled.
+
+## 3. BigCommerce Integration for SwiftLookup
+
+- **URL**: [https://swiftcomplete.notion.site/BigCommerce-Integration-for-SwiftLookup-12345abcdefg](https://swiftcomplete.notion.site/BigCommerce-Integration-for-SwiftLookup-12345abcdefg)
+- **Description**: Walkthrough for adding Swiftcomplete to BigCommerce checkout and account pages. Demonstrates how to insert the SwiftLookup JavaScript component and ensure address lines are populated using Swiftcomplete’s API. It also explains how to bias results using the customer’s geolocation and apply component-level configuration.
+
+## Tools & Guides
+
+- [Integration Guide (Notion)](https://www.notion.so/1a466db17f3b80a18a63dced29d4cfb5?pvs=21)
+- [Support](mailto:support@swiftcomplete.com)
+
+---
+
+## UI Integrations
+
+### 1. Swiftcomplete SwiftLookup API (JavaScript)
+
+- 📘 [Docs](https://swiftcomplete.notion.site/)
+- 🧠 Description: The SwiftLookup API provides realtime address suggestions as you type, eliminating typos and mistakes and reducing the time it takes to find accurate postal addresses.
+
+### Data Coverage
+
+- **Supported Country**: United Kingdom (🇬🇧)
+
+### Authentication
+
+To use the SwiftLookup API:
+
+1. Sign in or register: [https://www.swiftcomplete.com/account/](https://www.swiftcomplete.com/account/)
+2. Generate your API key at: [https://www.swiftcomplete.com/account/api/](https://www.swiftcomplete.com/account/api/)
+
+### Integration Options
+
+- JavaScript integration on websites and checkouts
+- WooCommerce Plugin integration
+
+### JavaScript Integration Steps
+
+**Step 1: Load Swiftcomplete JS**
+
+```html
+<script>!function (e, t, c) {
+    e.swiftcomplete = e.swiftcomplete || {};
+    var s = t.createElement("script");
+    s.async = !0, s.src = c;
+    var r = t.getElementsByTagName("script")[0];
+    r.parentNode.insertBefore(s, r)
+}(window, document, "<https://assets.swiftcomplete.com/js/swiftlookup.js>");
+</script>
+
+```
+
+**Step 2: Attach SwiftLookup to Field**
+Replace placeholders with your API key and textbox ID.
+
+Now copy this script and paste it directly after the previous code snippet, before the closing `<head>` tag.
+
+To get the script running, replace `INSERT_KEY_HERE` with your SwiftLookup API key, and replace `INSERT_TEXT_FIELD_ID_HERE` with the ID of an existing textbox on your page.
+
+The script initialises SwiftLookup on your existing textbox, restricts searching to Great Britain and logs the record and coordinates to the developer console when you select a result from the list of autocomplete suggestions.
+
+```jsx
+<script type="text/javascript">
+    /*#########################################
+    Insert your API key here to run the demo:
+    #########################################*/
+    var SWIFTCOMPLETE_API_KEY = "INSERT_KEY_HERE";
+    var SWIFTCOMPLETE_SEARCH_FIELD_ID = "INSERT_TEXT_FIELD_ID_HERE";
+
+    function initialiseSwiftcomplete() {
+        swiftcomplete.runWhenReady(function () {
+            // Attach search functionality to existing field
+            swiftcomplete.controls["Search field"] = new swiftcomplete.SwiftLookup({
+                field: document.getElementById(SWIFTCOMPLETE_SEARCH_FIELD_ID),
+                key: SWIFTCOMPLETE_API_KEY,
+                emptyQueryMode: 'prompt',
+				        promptText: 'Type your address, what3words, or postcode',
+			          noResultsText: 'No addresses found - click here to enter your address manually',
+		            manualEntryText: 'Can\'t find your address? Click here to enter manually',
+                searchFor: "what3words, address"
+                scrollToFieldOnFocus: true,
+                populateLineFormat: [
+                { field: document.getElementById("companyInput"), format: "Company" },
+                { field: document.getElementById("addressLine1Input"), format: "AddressLine1" },
+                { field: document.getElementById("addressLine2Input"), format: "AddressLine2" },
+                { field: document.getElementById("addressLine3Input"), format: "AddressLine3" },
+                { field: document.getElementById("cityInput"), format: "TertiaryLocality, SecondaryLocality, PrimaryLocality STATEABBREVIATION" },
+                { field: document.getElementById("provinceInput"), format: "" },
+                { field: document.getElementById("postCodeInput"), format: "POSTCODE" },
+                { field: document.getElementById("countryInput"), format: "PrimaryCountry" },
+								{ field: document.getElementById("what3wordsInput"), format: "what3words" },
+            });
+
+            // Restrict searching to just Great Britain (leave this out to search all available countries)
+            swiftcomplete.controls["Search field"].setCountries('gb');
+
+            // Add event listener to listen for when a result has been selected
+            document.getElementById(SWIFTCOMPLETE_SEARCH_FIELD_ID).addEventListener('swiftcomplete:swiftlookup:selected', function (e) {
+                // Record
+                console.log(e.detail.result.record);
+
+                // Coordinates
+                console.log(e.detail.result.geometry.centre);
+            }, false);
+        });
+    }
+
+    window.addEventListener("load", initialiseSwiftcomplete, false);
+</script>
+```
+
+**Step 3: Test Integration**
+Log selected address and coordinates to developer console.
+
+### Migration Guide
+
+- Replaces legacy swiftcomplete.js with swiftlookup.js
+- Updated CSS: swiftlookup.css
+- Deprecated assets no longer supported
+
+### Attributes
+
+Customise autocomplete with these parameters:
+
+| Parameter | Example | Type | Description |
+| --- | --- | --- | --- |
+| key | 'xxxxxxx' | String | API key |
+| field | 'input-id' | String | HTML input element ID |
+| searchFor | 'what3words,address,place' | String | Result types |
+| emptyQueryMode | 'prompt' | String | Behaviour when empty |
+| scrollToFieldOnFocus | true | Boolean | Scroll to input on focus |
+| populateLineCount | 5 | Number | Number of address lines |
+| populateLineFormat | [ ] | Array | Format lines to populate fields |
+| hideOnEmptyResults | false | Boolean | Hide dropdown if empty |
+| requestDeviceLocation | true | Boolean | Request geolocation |
+| showControlAfterPermissions | true | Boolean | Show after geolocation allowed |
+| text | 'London' | String | Initial search value |
+| promptText | 'Type your address...' | String | Prompt text |
+| noResultsText | 'No results found' | String | No result fallback |
+| manualEntryText | 'Enter manually' | String | Manual entry prompt |
+
+### Available Types for `searchFor`
+
+- **what3words**
+- **address**
+- **place**
+    - area, settlement
+- **road**
+- **transit**
+    - airport, metro, railway, tram (incl. specific city tram systems)
+
+### Functions
+
+Manipulate behaviour post-init:
+
+| Function | Example | Description |
+| --- | --- | --- |
+| setMaxAutocompleteResults | 5 | Max general suggestions |
+| setMaxContainerResults | 100 | Max container results |
+| setSearchFor | 'address' | Limit result types |
+| setCountries | 'gb' | ISO country restriction |
+| setMaxDistance | 3000 | Radius limit in meters |
+| biasTowards | '///filled.count.soap' | Bias by W3W/coords |
+| getDeviceLocation | true | Ask for location |
+| setTextSearchOptions | {...} | Override text options |
+| getAddressAutocompleteCoverage | - | Return supported countries |
+| hasAddressAutocompleteCoverageForCountry | 'gb' | True/false check |
+| setReactFieldValue | el, value | Update value in React apps |
+
+### Events
+
+Integrate with business logic:
+
+| Event | Trigger | Description |
+| --- | --- | --- |
+| swiftcomplete:swiftlookup:selected | Result selection | Data about selected record |
+| swiftcomplete:suggestion | On suggest | Suggestion list fetched |
+| swiftcomplete:userLocation | Geolocation allowed | Returns coordinates |
+| swiftcomplete:swiftlookup:manualentry | Manual entry click | Trigger for manual mode |
+
+### Troubleshooting
+
+Need help? Contact: [support@swiftcomplete.com](mailto:support@swiftcomplete.com)
+
+### 2. Swiftcomplete: WooCommerce Plugin for SwiftLookup
+
+- 📘 [Docs](https://www.notion.so/1a466db17f3b8018bc4ce65f85f6c852?pvs=21)
+- 🧠 Description: The Swiftcomplete SwiftLookup Plugin for WooCommerce adds real-time address autocomplete to billing and shipping fields during checkout. This integration helps capture accurate postal addresses, reduces errors, enhances user experience, and improves conversion rates.
+
+---
+
+## 🧩 Plugin Features
+
+- Realtime postal address autocomplete
+- what3words address input field (optional)
+- Optional state / UK county auto-fill
+- Address field visibility toggle
+- Localised biasing via postcode or town
+- Custom labels and placeholder text for billing/shipping fields
+
+---
+
+## 🛠 Prerequisites
+
+### 1. Access to WordPress Dashboard
+
+You must have admin access to your WordPress Dashboard to install and activate the plugin.
+
+If you do not have access, send this guide to your developer.
+
+### 2. Swiftcomplete Account
+
+- [Create a Swiftcomplete account](https://www.swiftcomplete.com/woocommerce/sign-up/)
+- [Log in to your existing account](https://www.swiftcomplete.com/account/login/)
+
+---
+
+## 🧪 Installation
+
+1. **Download** the plugin ZIP from: [Download SwiftLookup Plugin](https://www.swiftcomplete.com/woocommerce/download/)
+2. In WordPress Admin:
+Go to **Plugins → Add New → Upload Plugin**
+3. **Select** the downloaded `.zip` file (do not unzip).
+4. Click **Install Now** → **Activate Plugin**
+
+Once activated, the widget will appear in both billing and shipping address fields at checkout.
+
+---
+
+## ⚙️ Plugin Settings
+
+Settings can be configured from the plugin settings page after installation. Options include:
+
+### ➕ Enable what3words
+
+Adds a dedicated what3words field on the checkout page. This helps deliver to precise 3m x 3m squares even when traditional addresses are unreliable.
+
+### 👀 Hide address fields until a selection is made
+
+Only show address input fields after a valid address suggestion is selected from autocomplete. Reduces clutter and prevents invalid entries.
+
+### 🧭 Return UK counties / international states
+
+Enable region-specific information (like counties, states, or provinces) to be returned as part of the address record.
+
+### 📍 Location Biasing
+
+Biases autocomplete suggestions toward a preferred location (e.g., postcode, city). Improves result relevance. If left empty, IP-based biasing will apply.
+
+### ✍️ Custom Search Field Labels & Placeholders
+
+Modify labels and placeholder prompts to suit your branding and UX tone.
+
+### Billing Field:
+
+- **Label** (e.g., “Billing Address”)
+- **Placeholder** (e.g., “Type your address or what3words”)
+
+### Shipping Field:
+
+- **Label** (e.g., “Shipping Address”)
+- **Placeholder** (e.g., “Search delivery location”)
+
+---
+
+## ❓ Troubleshooting
+
+If you're experiencing issues with plugin setup or address lookups:
+
+- Ensure your API key is valid and has not expired.
+- Check browser console logs for JavaScript errors.
+- Verify that the plugin is active and properly installed.
+
+Contact support:
+📩 [support@swiftcomplete.com](mailto:support@swiftcomplete.com)
+
+---
+
+## 📦 Plugin Metadata
+
+| Property | Value |
+| --- | --- |
+| Plugin Name | Swiftcomplete SwiftLookup for WooCommerce |
+| Plugin Size | ~7kb |
+| Dependencies | WooCommerce |
+| Compatibility | WordPress (latest), WooCommerce (latest) |
+| Requires Configuration | Yes — requires API key and optional custom settings |
+| Source Code | Proprietary (distributed as installable plugin ZIP) |
+| License | Swiftcomplete Commercial Terms |
+
+---
+
+### 3. Swiftcomplete: BigCommerce Integration for SwiftLookup
+
+- 📘 [Docs](https://www.notion.so/1d666db17f3b80e9bfceef1d64bea34d?pvs=21)
+- 🧠 Description: The Swiftcomplete SwiftLookup Plugin for BigCommerce integrates address autocomplete into billing and shipping fields in the checkout experience. It improves form accuracy, accelerates address entry, and supports what3words integration.
+
+---
+
+## 🛠 Prerequisites
+
+### 1. BigCommerce Dashboard Access
+
+You need admin access to the BigCommerce dashboard with permissions to configure the Script Manager.
+
+### 2. Swiftcomplete API Key
+
+- [Create a Swiftcomplete account](https://www.swiftcomplete.com/account/register)
+- [Login to your Swiftcomplete dashboard](https://www.swiftcomplete.com/account/login)
+- Generate a SwiftLookup API key from the API section.
+
+---
+
+## 🔧 Integration Steps
+
+### Step 1 – Open Script Manager
+
+Navigate to `Sidebar → Storefront → Script Manager`.
+
+### Step 2 – Create a Script
+
+Select `Create a Script`. Configure it with the following:
+
+- **Placement:** `header`
+- **Location:** `Checkout`
+- **Script Category:** `Essential`
+- **Script Type:** `Script`
+
+### Step 3 – Add the Swiftcomplete Script
+
+Paste the SwiftLookup script snippet into the Script Contents field. This includes:
+
+- Initialising the JS SDK via CDN (`swiftlookup.js`)
+- Creating the dynamic `<input>` for the address finder
+- Populating address fields with selected record
+- Optionally including a `what3words` custom field (if added in admin)
+
+```jsx
+<script src="<https://unpkg.com/react-trigger-change/dist/react-trigger-change.js>"></script>
+<script>
+	// BigCommerce SwiftComplete Integration
+	// This script integrates the SwiftComplete address finder into the BigCommerce checkout process.
+	// It dynamically creates an address finder input field and populates the shipping address fields based on the user's selection.
+	// It uses the SwiftComplete API to fetch address suggestions and populate the fields accordingly.
+	// The script waits for the page to load, checks for the presence of the shipping address container,
+	// and if found, creates the address finder input field. It then initializes the SwiftComplete functionality.
+	
+	// Variables
+  loadedTimeout = null;
+  *#########################################
+  Insert your API key here to run the demo:
+  #########################################*/
+  var SWIFTCOMPLETE_API_KEY = "INSERT_KEY_HERE";
+  var SWIFTCOMPLETE_SEARCH_FIELD_ID = "INSERT_TEXT_FIELD_ID_HERE";
+
+    !function (e, t, c) {
+    e.swiftcomplete = e.swiftcomplete || {};
+    var s = t.createElement("script");
+    s.async = !0, s.src = c;
+    var r = t.getElementsByTagName("script")[0];
+    r.parentNode.insertBefore(s, r)
+        }(window, document, "https://assets.swiftcomplete.com/js/swiftlookup.js");
+
+window.addEventListener('load', loadSwiftcompleteBigCommerceIntegration);
+
+function loadSwiftcompleteBigCommerceIntegration() {
+    var container = document.getElementById('checkoutShippingAddress');
+
+    if (!container) {
+        loadedTimeout = setTimeout(loadSwiftcompleteBigCommerceIntegration, 500);
+        return;
+    }
+
+    var shippingContainers = container.getElementsByClassName('checkout-address');
+    var addressLine1Field = null;
+    var shippingContainer = null;
+
+    if (shippingContainers.length == 1) {
+        addressLine1Field = document.getElementById('addressLine1Input').parentNode.parentNode;
+        shippingContainer = shippingContainers[0];
+    } else {
+        loadedTimeout = setTimeout(loadSwiftcompleteBigCommerceIntegration, 500);
+        return;
+    }
+
+		var el = document.createElement('div');
+    el.className = 'dynamic-form-field floating-form-field';
+
+    var fieldEl = document.createElement('div');
+    fieldEl.className = 'form-field';
+    
+    var searchEl = document.createElement('input');
+    searchEl.className = 'form-input optimizedCheckout-form-input floating-input';
+    searchEl.id = 'swiftcomplete-shipping-address-finder';
+    fieldEl.appendChild(searchEl);
+    el.appendChild(fieldEl);
+
+    var labelEl = document.createElement('label');
+    labelEl.innerText = 'Address Finder';
+    labelEl.className = 'floating-label form-label optimizedCheckout-form-label';
+    labelEl.setAttribute('for', 'swiftcomplete-shipping-address-finder');
+    fieldEl.appendChild(labelEl);
+
+    shippingContainer.insertBefore(el, addressLine1Field);
+
+    initialiseSwiftcomplete();
+}
+
+function initialiseSwiftcomplete() {
+    swiftcomplete.runWhenReady(function () {
+        // Dynamically find the custom field with a label containing "what3words", "what3words address", or "w3w"
+        let w3wField = null;
+        const labels = document.querySelectorAll('label.form-label');
+
+        labels.forEach(label => {
+            const labelText = label.innerText.toLowerCase().trim();
+            if (labelText.includes('what3words') || labelText.includes('w3w')) {
+                const inputId = label.getAttribute('for'); // Get the associated input field ID
+                w3wField = document.getElementById(inputId); // Find the input field
+            }
+        });
+
+        // Initialize SwiftComplete with the dynamically found field
+        const searchField = document.getElementById(SWIFTCOMPLETE_SEARCH_FIELD_ID);
+        swiftcomplete.controls[SWIFTCOMPLETE_SEARCH_FIELD_ID] = new swiftcomplete.SwiftLookup({
+            field: searchField,
+            key: SWIFTCOMPLETE_API_KEY,
+            searchFor: "what3words,address",
+            emptyQueryMode: 'prompt',
+            promptText: 'Type your address, what3words, or postcode',
+            noResultsText: 'No addresses found - click here to enter your address manually',
+            manualEntryText: 'Can\'t find your address? Click here to enter manually',
+            scrollToFieldOnFocus: true,
+            populateLineFormat: [
+                { field: document.getElementById("companyInput"), format: "Company" },
+                { field: document.getElementById("addressLine1Input"), format: "AddressLine1" },
+                { field: document.getElementById("addressLine2Input"), format: "AddressLine2" },
+                { field: document.getElementById("cityInput"), format: "TertiaryLocality, SecondaryLocality, PrimaryLocality STATEABBREVIATION" },
+                { field: document.getElementById("provinceInput"), format: "" },
+                { field: document.getElementById("postCodeInput"), format: "POSTCODE" },
+                ...(w3wField ? [{ field: w3wField, format: "what3words" }] : []) // Add the w3w field if found
+            ],
+        });
+        const control = swiftcomplete.controls[SWIFTCOMPLETE_SEARCH_FIELD_ID];
+        control.groupBy('road,emptyroad');
+        control.setMaxAutocompleteResults(5);
+        control.setMaxContainerResults(100);
+        control.setCountries('gb');
+    });
+}
+```
+
+### Step 4 – Add a what3words Field
+
+To enable what3words support:
+
+- Go to `Settings → Advanced → Account sign up form → Address Fields`
+- Add a new **Text Field**
+- Field name should include: `what3words address` or `w3w`
+
+SwiftLookup will populate this if a matching address is selected.
+
+---
+
+## ✅ Address Field Mapping & Configuration
+
+The following BigCommerce fields are populated:
+
+| Field | SwiftLookup Format |
+| --- | --- |
+| `companyInput` | `Company` |
+| `addressLine1Input` | `AddressLine1` |
+| `addressLine2Input` | `AddressLine2` |
+| `cityInput` | `TertiaryLocality, SecondaryLocality, PrimaryLocality STATEABBREVIATION` |
+| `provinceInput` | *(empty)* |
+| `postCodeInput` | `POSTCODE` |
+| `custom what3words` | `what3words` (if added manually by admin) |
+
+---
+
+## 🔁 SwiftLookup Settings
+
+The embedded JavaScript uses these SwiftLookup settings:
+
+| Parameter | Value |
+| --- | --- |
+| `searchFor` | `"what3words,address"` |
+| `emptyQueryMode` | `"prompt"` |
+| `promptText` | `"Type your address, what3words, or postcode"` |
+| `noResultsText` | `"No addresses found - click here to enter manually"` |
+| `manualEntryText` | `"Can't find your address? Click here to enter manually"` |
+| `scrollToFieldOnFocus` | `true` |
+| `setCountries` | `'gb'` |
+| `setMaxAutocompleteResults` | `5` |
+| `setMaxContainerResults` | `100` |
+
+---
+
+## 🧠 Developer Notes
+
+- Use `react-trigger-change` to properly simulate DOM input changes for React-rendered fields.
+- Automatically finds and injects into the checkout DOM on page load using a retry timer.
+- Searches for `what3words` field dynamically by label name.
+- Supports dynamic line formatting for full address population.
+
+---
+
+## 🧪 Testing the Integration
+
+After adding the script:
+
+1. Visit your BigCommerce checkout.
+2. Type an address or postcode.
+3. Select a suggestion from the dropdown.
+4. Address fields will populate accordingly.
+
+If `what3words` is enabled, it will also be filled with a valid 3-word address.
+
+---
+
+## 🔧 Troubleshooting
+
+- **Script not loading?** Ensure correct placement in Script Manager and that the store is using Optimized Checkout.
+- **Fields not populating?** Check `input` element `IDs` match the script configuration.
+- **what3words not populating?** Ensure the custom text field exists and has a name that includes `what3words`.
+
+For help, contact: [support@swiftcomplete.com](mailto:support@swiftcomplete.com)
+
+---
+
+## 🧾 Metadata
+
+| Field | Value |
+| --- | --- |
+| Plugin Type | Script injection via Script Manager |
+| Platform | BigCommerce (Optimiased Checkout) |
+| API Key Req. | Yes |
+| Maintainer | Swiftcomplete |
+| Script CDN | [https://assets.swiftcomplete.com/js/swiftlookup.js](https://assets.swiftcomplete.com/js/swiftlookup.js) |
+| Setup Time | ~10 minutes |
+
+---
+
+## Support
+
+📬 [support@swiftcomplete.com](mailto:support@swiftcomplete.com)
+
+📘 [Integration Docs Overview](https://www.notion.so/1a466db17f3b80a18a63dced29d4cfb5?pvs=21)
+
+## List of prompt to ask an AI tool for the Swiftcomplete integration:
+
+<aside>
+💡
+
+*Integrate the Swiftcomplete swiftlookup.js JavaScript SDK into a custom HTML checkout form. Use the SDK to provide real-time address autocomplete (including what3words support) and auto-populate the standard fields: Address Line 1, Address Line 2, City, Postcode, Country, and a what3words address input. Populate each field using the appropriate populateLineFormat. Reference the OpenAPI spec and Swiftcomplete documentation for accurate parameter configuration and best practices.*
+
+</aside>
+
+## 🧠 Suggested Prompts for LLMs
+
+Use these prompts with a large language model (LLM) like ChatGPT to generate integration-ready code using the Swiftcomplete SwiftLookup API and JavaScript SDK.
+
+These prompts cover common use cases across different platforms and scenarios. You can modify field names and configuration to match your project’s needs.
+
+---
+
+### 🔹 1. JavaScript SDK — Basic Integration into HTML Checkout
+
+**Prompt:**
+
+> I want to integrate the Swiftcomplete swiftlookup.js JavaScript SDK into a custom HTML checkout form. Use the SDK to provide real-time address autocomplete and populate standard shipping address fields including:
+> 
+> - Address Line 1 (`address1`)
+> - Address Line 2 (`address2`)
+> - City (`city`)
+> - Postcode (`postcode`)
+> - Country (`country`)
+> - what3words address (`what3words`)
+> 
+> Add an address finder input (`addressFinder`) at the top of the form. The script should:
+> 
+> - Use `searchFor: "what3words,address"`
+> - Map data using `populateLineFormat`
+> - Restrict search to UK results only using `setCountries("gb")`
+> - Include prompt text and fallback messages
+> Generate a full HTML file with embedded JavaScript and basic CSS styling.
+
+---
+
+### 🔹 2. JavaScript SDK — Override Address Line 1 with Swiftcomplete
+
+**Prompt:**
+
+> I want to integrate Swiftcomplete's swiftlookup.js into my HTML form so that the returned address suggestion completely overrides the value of Address Line 1 (address1). The user starts typing in a new input field (addressFinder) and when they select a result, the address1 field should be replaced with the formatted address line from the result.
+> 
+> 
+> Additional fields should also be populated:
+> 
+> - Address Line 2 (`address2`)
+> - City (`city`)
+> - Postcode (`postcode`)
+> - Country (`country`)
+> - what3words address (`what3words`)
+> 
+> Restrict to UK addresses using `setCountries("gb")`. Use `populateLineFormat` and `scrollToFieldOnFocus`. Include helpful prompt and manual entry fallback options.
+> 
+
+---
+
+### 🔹 3. BigCommerce — Script Manager Integration
+
+**Prompt:**
+
+> I want to integrate the Swiftcomplete SwiftLookup address autocomplete into a BigCommerce checkout page using the Script Manager. The script should:
+> 
+> - Insert an address finder field into the shipping address section (`checkoutShippingAddress`)
+> - Populate the following shipping fields:
+>     - `addressLine1Input`
+>     - `addressLine2Input`
+>     - `cityInput`
+>     - `provinceInput` (optional)
+>     - `postCodeInput`
+>     - A custom `what3words` input, if present
+> 
+> The script should use the `swiftlookup.js` SDK, include `populateLineFormat`, set `searchFor` to `"what3words,address"`, and restrict to `setCountries("gb")`. Add retry logic if the DOM is not ready, and attach an event handler for `swiftcomplete:swiftlookup:selected`.
+> 
+
+---
+
+### 🔹 4. WooCommerce — Checkout Autocomplete Integration
+
+**Prompt:**
+
+> I want to integrate the Swiftcomplete SwiftLookup JavaScript SDK into my WooCommerce checkout page. It should:
+> 
+> - Add an address finder input at the top of the shipping address section
+> - Auto-populate WooCommerce checkout fields:
+>     - `billing_address_1`, `billing_address_2`
+>     - `billing_city`
+>     - `billing_postcode`
+>     - `billing_country`
+>     - A custom field like `billing_w3w` for what3words
+> 
+> Use the `swiftlookup.js` SDK, configure `searchFor: "what3words,address"`, and map fields with `populateLineFormat`. Use `setCountries("gb")`. Output should be a `<script>` block that can be included via a theme or plugin.
+> 
+
+---

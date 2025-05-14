@@ -164,7 +164,7 @@ paths:
             type: string
             examples: 
              - 7
-          description: Number of lines of the full address. Max 8.
+          description: Number of lines of the full address. Max 7.
         - name: distanceUnits
           in: query
           required: false
@@ -194,64 +194,56 @@ paths:
           schema:
             type: string
             examples: 
-              - Company
-          description: "Line 0 of the full address selected by the populateIndex is assigned to `Company`, if it is mentioned it would should only this record to the lines 0"
+              - AddressLine1
+          description: "Line 0 of the full address selected by the populateIndex is assigned to `AddressLine1`, if it is mentioned it would should only this record to the lines 0"
         - name: lineFormat1
           in: query
           required: false
           schema:
             type: string
             examples: 
-              - "SubBuilding, BuildingName"
-          description: "Line 1 of the full address selected by the populateIndex is assigned to `SubBuilding, BuildingName`, if it is mentioned it would should only this record to the lines 1"
+              - "AddressLine2"
+          description: "Line 1 of the full address selected by the populateIndex is assigned to `AddressLine2`, if it is mentioned it would should only this record to the lines 1"
         - name: lineFormat2
           in: query
           required: false
           schema:
             type: string
             examples: 
-              - "BuildingNumber SecondaryRoad, Road, PoBox"
-          description: "Line 2 of the full address selected by the populateIndex is assigned to `BuildingNumber SecondaryRoad, Road, PoBox`, if it is mentioned it would should only this record to the lines 2"
+              - "AddressLine3"
+          description: "Line 2 of the full address selected by the populateIndex is assigned to `AddressLine3`, if it is mentioned it would should only this record to the lines 2"
         - name: lineFormat3
           in: query
           required: false
           schema:
             type: string
             examples: 
-              - "TertiaryLocality, SecondaryLocality"
-          description: "Line 3 of the full address selected by the populateIndex is assigned to `TertiaryLocality`, SecondaryLocality, if it is mentioned it would should only this record to the lines 3"
+              - "TertiaryLocality, SecondaryLocality, PrimaryLocality STATEABBREVIATION"
+          description: "Line 3 of the full address selected by the populateIndex is assigned to `TertiaryLocality`, SecondaryLocality, PrimaryLocality STATEABBREVIATION if it is mentioned it would should only this record to the lines 3"
         - name: lineFormat4
           in: query
           required: false
           schema:
             type: string
             examples: 
-              - PrimaryLocality
-          description: "Line 4 of the full address selected by the populateIndex is assigned to `PrimaryLocality`, if it is mentioned it would should only this record to the lines 4"
+              - POSTCODE
+          description: "Line 4 of the full address selected by the populateIndex is assigned to `POSTCODE`, if it is mentioned it would should only this record to the lines 5"
         - name: lineFormat5
           in: query
           required: false
           schema:
             type: string
             examples: 
-              - POSTCODE
-          description: "Line 5 of the full address selected by the populateIndex is assigned to `POSTCODE`, if it is mentioned it would should only this record to the lines 5"
+              - PrimaryCountry
+          description: "Line 5 of the full address selected by the populateIndex is assigned to `PrimaryCountry`, if it is mentioned it would should only this record to the lines 6"
         - name: lineFormat6
           in: query
           required: false
           schema:
             type: string
             examples: 
-              - PrimaryCountry
-          description: "Line 6 of the full address selected by the populateIndex is assigned to `PrimaryCountry`, if it is mentioned it would should only this record to the lines 6"
-        - name: lineFormat7
-          in: query
-          required: false
-          schema:
-            type: string
-            examples: 
               - what3words
-          description: "Line 7 of the full address selected by the populateIndex is assigned to `what3words`, if it is mentioned it would should only this record to the lines 7"
+          description: "Line 6 of the full address selected by the populateIndex is assigned to `what3words`, if it is mentioned it would should only this record to the lines 7"
         - name: pageFrom
           in: query
           required: false

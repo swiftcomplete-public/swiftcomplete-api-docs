@@ -1,0 +1,82 @@
+# Swiftcomplete SwiftLookup API (v1)
+
+The **SwiftLookup API** provides fast, accurate postal address autocomplete and validation. It supports searching for traditional addresses, what3words addresses, postcodes, and more—returning precise and structured address suggestions in real time.
+
+---
+
+## 📚 API Documentation
+
+- [API Overview](https://www.docs.swiftcomplete.com/openapi.yaml)
+- [LLMs Text](https://www.docs.swiftcomplete.com/llms.txt)
+- [LLMs Full Text](https://www.docs.swiftcomplete.com/llms-full.txt)
+- [JavaScript Searchbox Integration](https://www.notion.so/Swiftcomplete-SwiftLookup-API-Javascript-1a066db17f3b8076bc67f00c1ca24742?pvs=21)
+- [WooCommerce Integration](https://www.notion.so/WooCommerce-plugin-for-Swiftcomplete-1a466db17f3b8018bc4ce65f85f6c852?pvs=4)
+- [BigCommerce Integration](https://www.notion.so/BigCommerce-Integration-for-Swiftcomplete-1d666db17f3b80e9bfceef1d64bea34d?pvs=4)
+
+---
+
+## 🔑 API Key
+
+- **Required for all endpoints**: Append as a query parameter `key=xxx`.
+- **Manage your API keys**: [API Dashboard](https://www.swiftcomplete.com/account/api).
+
+---
+
+## 🌐 API Endpoint
+
+- **Base URL**: `https://api.swiftcomplete.com/v1`
+- **Endpoint**: `GET /swiftlookup/`
+  - Provides real-time address, postcode, and what3words suggestions.
+
+---
+
+## 🛠 Common Parameters
+
+- **`key`**: Your API key (required).
+- **`text`**: Search term (e.g., postcode, street, city, or what3words address).
+- **`biasTowards`**: Prioritize results near a specific location (e.g., coordinates or what3words).
+- **`searchFor`**: Filter results by type (e.g., "address", "what3words").
+- **`countries`**: Restrict search to specific countries (ISO alpha-2 codes).
+- **`maxResults`**: Limit the number of results returned.
+- **`populateLineCount`**: Number of address lines to return (max: 7).
+- **`distanceUnits`**: Units for distance display (e.g., "metric", "imperial").
+- **`groupResults`**: Group results when no query is provided.
+
+---
+
+## 🔐 Authentication
+
+- **API Key**: Passed as a query parameter (`key=xxx`).
+
+---
+
+## ❌ Errors
+
+- **400**: Invalid parameters (e.g., `InvalidBias`).
+- **401**: Unauthorized (`MissingKey`).
+- **403**: Free trial expired (`FreeTrialExpired`).
+- **429**: Rate limit exceeded.
+
+---
+
+## 📖 Tools & Guides
+
+- [Integration Guide](https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466db17f3b80a18a63dced29d4cfb5)
+- [Support](mailto:support@swiftcomplete.com)
+
+---
+
+## 💡 Additional Notes
+
+- **Quota and Usage Limits**:
+  - Free trials are limited and return a 403 when expired.
+  - Rate limits and quotas vary by plan; exceeding them results in a 429 error.
+- **Optimizations**:
+  - Use `populateIndex` to resolve full addresses only after user selection.
+  - Delay input triggers to minimize repeated API calls.
+  - Bias results toward known coordinates or what3words addresses for relevance.
+
+---
+
+For more detailed information, refer to the [LLMs Full Text](https://www.docs.swiftcomplete.com/llms-full.txt).
+

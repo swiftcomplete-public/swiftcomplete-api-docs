@@ -1,15 +1,15 @@
-# Swiftcomplete OpenAPI Specification
+# Swiftcomplete API Docs
 
-Welcome to the official OpenAPI 3.1 documentation for the [Swiftcomplete SwiftLookup API](https://www.swiftcomplete.com).
+Welcome to the official documentation repository for the **Swiftcomplete API Docs**. This repository now hosts the OpenAPI specification for the **SwiftLookup API** as well as resources for integrating with **LLMs (Large Language Models)**.
 
 ## 🔍 About
 
-SwiftLookup offers fast and accurate real-time address autocomplete, what3words search, and postcode lookup, enabling seamless user experiences in web forms and applications.
+SwiftLookup offers fast and accurate real-time address autocomplete, what3words search, and postcode lookup, enabling seamless user experiences in web forms and applications. Additionally, this repository includes resources for leveraging Swiftcomplete APIs with LLMs for advanced integrations.
 
 ## 🚀 Live Swagger Documentation
 
 Explore the live interactive Swagger UI here:  
-👉 **[https://swiftcomplete.github.io/swiftcomplete-openapi-spec](https://swiftcomplete.github.io/swiftcomplete-openapi-spec)**
+👉 **[https://swiftcomplete.github.io/swiftcomplete-api-docs](https://swiftcomplete.github.io/swiftcomplete-api-docs)**
 
 ## 📂 Repository Structure
 
@@ -18,32 +18,26 @@ The repository is organized as follows:
 ```
 docs/
 ├── assets/
+├── openapi/
+│   └── index.html
 ├── openapi.yaml
+├── llms.txt
+├── llms-full.txt
 └── index.html
 ```
 
 - **`docs/assets/`**: Contains static assets for the documentation.  
+- **`docs/openapi/`**: Contains the Swagger UI entry point for the OpenAPI specification.  
+  - **`docs/openapi/index.html`**: The Swagger UI for the OpenAPI spec.  
 - **`docs/openapi.yaml`**: The OpenAPI specification file.  
-- **`docs/index.html`**: The entry point for the Swagger UI.
+- **`docs/llms.txt`**: A concise guide or configuration for LLM integration.  
+- **`docs/llms-full.txt`**: A detailed guide or extended configuration for LLM integration.  
+- **`docs/index.html`**: The main entry point for the documentation.
 
-## 🛠 How to Update the API Specification
+## 📧 Contact
 
-To make changes to the API specification:
-
-1. Edit the `openapi.yaml` file to reflect API updates.
-2. Commit and push your changes to the `main` branch.
-3. GitHub Pages will automatically update the hosted Swagger UI.
-
-## 🔐 Authentication
-
-To use the SwiftLookup API, you’ll need a valid API key.  
-Sign up and generate your API key here:  
-👉 [https://www.swiftcomplete.com/account/api](https://www.swiftcomplete.com/account/api)
-
-## 📖 Additional Resources
-
-For integration guides and SDKs, visit the Swiftcomplete Developer Documentation:  
-📚 **[Swiftcomplete Integration Docs](https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466db17f3b80a18a63dced29d4cfb5)**
+For support or inquiries, please contact us at:  
+📩 **[support@swiftcomplete.com](mailto:support@swiftcomplete.com)**
 
 ---
 
