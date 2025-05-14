@@ -52,9 +52,9 @@ The **SwiftLookup API** provides fast, accurate postal address autocomplete and 
 
 ## ❌ Errors
 
-- **400**: Invalid parameters (e.g., `InvalidBias`).
-- **401**: Unauthorized (`MissingKey`).
-- **403**: Free trial expired (`FreeTrialExpired`).
+- **400**: Invalid parameters (e.g., `Invalid Bias`).
+- **401**: Unauthorized (`Missing Key`).
+- **403**: Free trial expired (`Free Trial Expired`).
 - **429**: Rate limit exceeded.
 
 ---
@@ -75,6 +75,16 @@ The **SwiftLookup API** provides fast, accurate postal address autocomplete and 
   - Use `populateIndex` to resolve full addresses only after user selection.
   - Delay input triggers to minimize repeated API calls.
   - Bias results toward known coordinates or what3words addresses for relevance.
+
+---
+
+## 🌟 Demo and Pricing
+
+- A live demo of the SwiftLookup API is available at:  
+  👉 **[www.swiftcomplete.com](https://www.swiftcomplete.com)**
+
+- For pricing details, visit:  
+  👉 **[Pricing Page](https://www.swiftcomplete.com/#pricing)**
 
 ---
 

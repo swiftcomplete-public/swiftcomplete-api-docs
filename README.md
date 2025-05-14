@@ -9,7 +9,7 @@ SwiftLookup offers fast and accurate real-time address autocomplete, what3words 
 ## 🚀 Live Swagger Documentation
 
 Explore the live interactive Swagger UI here:  
-👉 **[https://swiftcomplete.github.io/swiftcomplete-api-docs](https://swiftcomplete.github.io/swiftcomplete-api-docs)**
+👉 **[https://docs.swiftcomplete.com/openapi](https://docs.swiftcomplete.com/openapi)**
 
 ## 📂 Repository Structure
 

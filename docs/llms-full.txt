@@ -21,7 +21,10 @@ The **SwiftLookup API** by Swiftcomplete is a RESTful API that provides fast, ac
     - Free trials are limited and return a 403 when expired
     - Rate limits and quotas per plan are enforced; exceeding them leads to error responses (likely 429)
 - **Live Demo:** [https://www.swiftcomplete.com/](https://www.swiftcomplete.com/)
+- **Pricing Details:** For pricing details visit:
+  👉 **[Pricing Page](https://www.swiftcomplete.com/#pricing)**
 
+---
 ---
 
 ## 📚 API Documentation
