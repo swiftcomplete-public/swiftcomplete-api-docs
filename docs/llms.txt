@@ -88,5 +88,12 @@ The **SwiftLookup API** provides fast, accurate postal address autocomplete and 
 
 ---
 
+## 🗂 More Resources
+
+Find all Swiftcomplete public repositories on GitHub:  
+👉 **[https://github.com/swiftcomplete-public](https://github.com/swiftcomplete-public)**
+
+---
+
 For more detailed information, refer to the [LLMs Full Text](https://www.docs.swiftcomplete.com/llms-full.txt).
 

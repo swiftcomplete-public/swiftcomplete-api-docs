@@ -25,7 +25,6 @@ The **SwiftLookup API** by Swiftcomplete is a RESTful API that provides fast, ac
   👉 **[Pricing Page](https://www.swiftcomplete.com/#pricing)**
 
 ---
----
 
 ## 📚 API Documentation
 
@@ -35,6 +34,12 @@ The **SwiftLookup API** by Swiftcomplete is a RESTful API that provides fast, ac
 - [JavaScript Searchbox Integration](https://www.notion.so/Swiftcomplete-SwiftLookup-API-Javascript-1a066db17f3b8076bc67f00c1ca24742?pvs=21)
 - [WooCommerce Integration](https://www.notion.so/WooCommerce-plugin-for-Swiftcomplete-1a466db17f3b8018bc4ce65f85f6c852?pvs=4)
 - [BigCommerce Integration](https://www.notion.so/BigCommerce-Integration-for-Swiftcomplete-1d666db17f3b80e9bfceef1d64bea34d?pvs=4)
+
+---
+## 📦 Public Repositories
+
+- **API & Developer Docs**: [swiftcomplete-api-docs](https://github.com/swiftcomplete-public/swiftcomplete-api-docs)
+- **WooCommerce Plugin**: [swiftcomplete-woocommerce](https://github.com/swiftcomplete-public/swiftcomplete-woocommerce)
 
 ---
 

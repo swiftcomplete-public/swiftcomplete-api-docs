@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://docs.swiftcomplete.com/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- OpenAPI YAML -->
+  <url>
+    <loc>https://docs.swiftcomplete.com/openapi/openapi.yaml</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Swagger UI or Redoc viewer -->
+  <url>
+    <loc>https://docs.swiftcomplete.com/openapi/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- LLM Metadata -->
+  <url>
+    <loc>https://docs.swiftcomplete.com/llms.txt</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://docs.swiftcomplete.com/llms-full.txt</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+    <!-- API Reference -->
+    <url>
+      <loc>https://swiftcomplete.notion.site</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+    </url>
+    
+</urlset>
