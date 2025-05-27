@@ -1,6 +1,7 @@
 openapi: 3.1.0
 info:
   title: Swiftcomplete API
+  x-postman-collection-url: https://docs.swiftcomplete.com/swiftcomplete.postman_collection.json
   license:
     name: Swiftcomplete API License
     url: https://www.swiftcomplete.com/terms
@@ -9,31 +10,40 @@ info:
     
       ## Overview
       
-      Fast, accurate postal address validation. The SwiftLookup API provides real-time address suggestions as users type, eliminating typos and mistakes and reducing the time it takes to find accurate postal addresses. If you are looking for a general places or location search, see our SwiftLookup API Documentation. If you need any help integrating our SwiftLookup API into your website or application, get in touch and one of our product experts will help get you started.
+      Fast, accurate postal address validation. The Address Autocomplete API provides real-time address suggestions as users type, eliminating typos and mistakes and reducing the time it takes to find accurate postal addresses. If you are looking for a general places or location search, see our Address Autocomplete API Documentation. If you need any help integrating our Address Autocomplete API into your website or application, get in touch and one of our product experts will help get you started.
       
       ## Data Coverage
       
-      The following countries are available in the SwiftLookup API:
+      The following countries are available in the Address Autocomplete API:
       
       - 🇬🇧 United Kingdom
           
       
       ## Authentication
       
-      Each request must be authenticated with a SwiftLookup API key, which you can create in your Swiftcomplete account:
+      Each request must be authenticated with a Address Autocomplete API key, which you can create in your Swiftcomplete account:
       
       1. [Sign in](https://www.swiftcomplete.com/account/login/) if you're already registered, or [create a Swiftcomplete account](https://www.swiftcomplete.com/account/register) if you're new to the service.
           
-      2. Go to the [API section](https://www.swiftcomplete.com/account/api) and create a **SwiftLookup API Key**.
+      2. Go to the [API section](https://www.swiftcomplete.com/account/api) and create a **Address Autocomplete API Key**.
           
       
       ## Integration Options
       
-      Once you've created a SwiftLookup API Key, you can build a server-side integration using the API.
+      Once you've created a Address Autocomplete API Key, you can build a server-side integration using the API.
       
       ## API Integration
       
-      Integrate the Swiftcomplete SwiftLookup API for general location and place search functionality.     
+      Integrate the Swiftcomplete Address Autocomplete API for general location and place search functionality. 
+      
+      ## Run in Postman
+      <a href="https://app.getpostman.com/run-collection?url=https://openapi.what3words.com/what3words.postman_collection.json" target="_blank" rel="noopener">
+        <img src="https://run.pstmn.io/button.svg" alt="Run in Postman">
+      </a>
+
+      **Additional resources:**
+      - [Documentation](https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466db17f3b80a18a63dced29d4cfb5)
+      - [Postman Collection](https://openapi.what3words.com/what3words.postman_collection.json)
   version: 1.0.0
   contact:
     name: Swiftcomplete Developer Support
@@ -41,10 +51,11 @@ info:
     email: support@swiftcomplete.com
 servers:
   - url: "https://api.swiftcomplete.com/v1"
+    description: "Swiftcomplete Address Autocomplete API"
 security:
   - ApiKeyAuth: []
 tags:
-  - name: SwiftLookup API
+  - name: Swiftcomplete Address Autocomplete API
     description: "Fast, accurate postal address validation"
     externalDocs:
       description: API documentation
@@ -55,7 +66,7 @@ paths:
       security:
         - ApiKeyAuth: []
       tags:
-        - SwiftLookup API
+        - Address Autocomplete API
       summary: Search for address, what3words, or postcode
       description: |
         This endpoint supports multiple search types through the `searchFor` parameter.
@@ -73,7 +84,7 @@ paths:
             type: string
             examples: 
               - Enter your Swiftcomplete API key
-          description: API key for Swiftcomplete SwiftLookup.
+          description: API key for Swiftcomplete Address Autocomplete.
         - name: text
           required: false
           in: query
@@ -371,7 +382,7 @@ components:
       in: query
       name: key
       description: |
-        The API key for authentication. You can create a SwiftLookup API key in your [Swiftcomplete account](https://www.swiftcomplete.com/account/api).
+        The API key for authentication. You can create a Address Autocomplete API key in your [Swiftcomplete account](https://www.swiftcomplete.com/account/api).
         The API key must be passed in the query string of the request. For example, `?key=your_api_key`.
   schemas:
     ErrorResponse:

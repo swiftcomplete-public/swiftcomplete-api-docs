@@ -1,0 +1,785 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Swiftcomplete API",
+    "x-postman-collection-url": "https://docs.swiftcomplete.com/swiftcomplete.postman_collection.json",
+    "license": {
+      "name": "Swiftcomplete API License",
+      "url": "https://www.swiftcomplete.com/terms"
+    },
+    "description": "<img src=\"https://content.pstmn.io/de604bb0-a4b7-4d62-a046-aa579ee32130/MTI2MTIgU3dpZnRjb21wbGV0ZSAtIEFkZHJlc3MgT3B0aW9ucy5naWY=\">\n\n  ## Overview\n  \n  Fast, accurate postal address validation. The Address Autocomplete API provides real-time address suggestions as users type, eliminating typos and mistakes and reducing the time it takes to find accurate postal addresses. If you are looking for a general places or location search, see our Address Autocomplete API Documentation. If you need any help integrating our Address Autocomplete API into your website or application, get in touch and one of our product experts will help get you started.\n  \n  ## Data Coverage\n  \n  The following countries are available in the Address Autocomplete API:\n  \n  - \ud83c\uddec\ud83c\udde7 United Kingdom\n      \n  \n  ## Authentication\n  \n  Each request must be authenticated with a Address Autocomplete API key, which you can create in your Swiftcomplete account:\n  \n  1. [Sign in](https://www.swiftcomplete.com/account/login/) if you're already registered, or [create a Swiftcomplete account](https://www.swiftcomplete.com/account/register) if you're new to the service.\n      \n  2. Go to the [API section](https://www.swiftcomplete.com/account/api) and create a **Address Autocomplete API Key**.\n      \n  \n  ## Integration Options\n  \n  Once you've created a Address Autocomplete API Key, you can build a server-side integration using the API.\n  \n  ## API Integration\n  \n  Integrate the Swiftcomplete Address Autocomplete API for general location and place search functionality. \n  \n  ## Run in Postman\n  <a href=\"https://app.getpostman.com/run-collection?url=https://openapi.what3words.com/what3words.postman_collection.json\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"https://run.pstmn.io/button.svg\" alt=\"Run in Postman\">\n  </a>\n\n  **Additional resources:**\n  - [Documentation](https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466db17f3b80a18a63dced29d4cfb5)\n  - [Postman Collection](https://openapi.what3words.com/what3words.postman_collection.json)\n",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Swiftcomplete Developer Support",
+      "url": "https://www.swiftcomplete.com",
+      "email": "support@swiftcomplete.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.swiftcomplete.com/v1",
+      "description": "Swiftcomplete Address Autocomplete API"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Swiftcomplete Address Autocomplete API",
+      "description": "Fast, accurate postal address validation",
+      "externalDocs": {
+        "description": "API documentation",
+        "url": "https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466db17f3b80a18a63dced29d4cfb5"
+      }
+    }
+  ],
+  "paths": {
+    "/swiftlookup/": {
+      "get": {
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "tags": [
+          "Address Autocomplete API"
+        ],
+        "summary": "Search for address, what3words, or postcode",
+        "description": "This endpoint supports multiple search types through the `searchFor` parameter.\n\n### Usage Modes:\n- `Search for Address` \u2014 traditional address autocomplete\n- `Search for what3words` \u2014 search by a what3words address\n- `Search for Postcode` \u2014 lookup by postcode \n",
+        "operationId": "swiftlooup",
+        "parameters": [
+          {
+            "name": "key",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "Enter your Swiftcomplete API key"
+              ]
+            },
+            "description": "API key for Swiftcomplete Address Autocomplete."
+          },
+          {
+            "name": "text",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "filled.count.s"
+              ]
+            },
+            "description": "A full or partial search term such as a postcode, street, city or what3words address."
+          },
+          {
+            "name": "biasTowards",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "filled.count.soap"
+              ]
+            },
+            "description": "The API will prioritise results near your approximate location (determined by your IP address) if this parameter is not provided. \nEither a what3words location (only if what3words has been enabled on this API key, in the format \"///word1.word2.word3\") or a WGS84 coordinate (in the format \"latitude,longitude\")\n"
+          },
+          {
+            "name": "container",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "V1;65|ALFRED Road|LONDON|W2;51.521198;-0.196309"
+              ]
+            },
+            "description": "Restricts the search to a specific container (e.g., traditional address, postcode, coordinates)."
+          },
+          {
+            "name": "searchFor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "what3words,address,place"
+              ]
+            },
+            "description": "A comma-separated list of result types to filter results. \nType of data to search for:\n- `address` for address lookup\n- `what3words` for what3words search\n- `place` for postcode\n- `road` for roads\n- `transit` for public transport\n`place`, `road`, `transit` are types are hierarchical, e.g. providing \"transit\" includes everything in the transit category, \"transit.airport\" only returns airports and \"transit.airport.large\" only returns the largest airports. View the table linked to this page.\n"
+          },
+          {
+            "name": "countries",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "gb"
+              ]
+            },
+            "description": "Comma-separated list of ISO 316601 alpha-2 country codes to restrict search within.\nIf the parameter is not provided the API will search for all the available countries.\n"
+          },
+          {
+            "name": "maxDistance",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                -1
+              ]
+            },
+            "description": "Limits the search to a maximum distance (in meters) from the biasTowards location."
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                5
+              ]
+            },
+            "description": "Maximum number of results to display (in general are between 1-5)\n- 5 (for traditional address), \n- 3 (for what3words address), \n- 100 (for container of traditional address)\nNote: If the results are more than `maxResults=100` than `pageFrom` parameter needs to be used to loop the results per 100 records.\n"
+          },
+          {
+            "name": "populateIndex",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                -1
+              ]
+            },
+            "description": "Index for populating the autocomplete field.\nUsed to obtain detailed information about a result in the response array. For example, to obtain full information for the first record, pass populatedIndex=0, or for the second, pass `populatedIndex=1` and so on.\n"
+          },
+          {
+            "name": "populateLineCount",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                7
+              ]
+            },
+            "description": "Number of lines of the full address. Max 7."
+          },
+          {
+            "name": "distanceUnits",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "metric"
+              ]
+            },
+            "description": "Unit of measurement for distance display\n- `metric` \u2192 Return distance in kilometres, unless under 1km in which case metres are returned\n- `imperial` \u2192 Return distance in miles, unless under 0.1 miles in which case feet are returned\n- `km`\n- `feet`\n- `miles`\n"
+          },
+          {
+            "name": "groupResults",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "examples": [
+                true
+              ]
+            },
+            "description": "Used when nothing is being typed on the search field, Only when the query is empty.\n"
+          },
+          {
+            "name": "lineFormat0",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "AddressLine1"
+              ]
+            },
+            "description": "Line 0 of the full address selected by the populateIndex is assigned to `AddressLine1`, if it is mentioned it would should only this record to the lines 0"
+          },
+          {
+            "name": "lineFormat1",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "AddressLine2"
+              ]
+            },
+            "description": "Line 1 of the full address selected by the populateIndex is assigned to `AddressLine2`, if it is mentioned it would should only this record to the lines 1"
+          },
+          {
+            "name": "lineFormat2",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "AddressLine3"
+              ]
+            },
+            "description": "Line 2 of the full address selected by the populateIndex is assigned to `AddressLine3`, if it is mentioned it would should only this record to the lines 2"
+          },
+          {
+            "name": "lineFormat3",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "TertiaryLocality, SecondaryLocality, PrimaryLocality STATEABBREVIATION"
+              ]
+            },
+            "description": "Line 3 of the full address selected by the populateIndex is assigned to `TertiaryLocality`, SecondaryLocality, PrimaryLocality STATEABBREVIATION if it is mentioned it would should only this record to the lines 3"
+          },
+          {
+            "name": "lineFormat4",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "POSTCODE"
+              ]
+            },
+            "description": "Line 4 of the full address selected by the populateIndex is assigned to `POSTCODE`, if it is mentioned it would should only this record to the lines 5"
+          },
+          {
+            "name": "lineFormat5",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "PrimaryCountry"
+              ]
+            },
+            "description": "Line 5 of the full address selected by the populateIndex is assigned to `PrimaryCountry`, if it is mentioned it would should only this record to the lines 6"
+          },
+          {
+            "name": "lineFormat6",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "what3words"
+              ]
+            },
+            "description": "Line 6 of the full address selected by the populateIndex is assigned to `what3words`, if it is mentioned it would should only this record to the lines 7"
+          },
+          {
+            "name": "pageFrom",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "examples": [
+                2
+              ]
+            },
+            "description": "Specifies the starting index for paginated results."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success - different usage modes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SwiftLookupAPIResponse"
+                  }
+                },
+                "examples": {
+                  "SearchW3W": {
+                    "summary": "Check a what3words address exists",
+                    "value": [
+                      {
+                        "primary": {
+                          "text": "///filled.count.soap",
+                          "highlights": [
+                            0,
+                            16
+                          ]
+                        },
+                        "secondary": {
+                          "text": "65 Alfred Road",
+                          "highlights": []
+                        },
+                        "type": "what3words",
+                        "isContainer": true,
+                        "container": "V1;65|ALFRED Road|LONDON|W2;51.521198;-0.196309"
+                      }
+                    ]
+                  },
+                  "ListAddresses": {
+                    "summary": "List the addresses per what3words search",
+                    "value": [
+                      {
+                        "primary": {
+                          "text": "Blaiz, 65 Alfred Rd",
+                          "highlights": [
+                            7,
+                            8,
+                            10,
+                            15,
+                            17,
+                            18
+                          ]
+                        },
+                        "secondary": {
+                          "text": "London, W2 5EU",
+                          "highlights": [
+                            0,
+                            5,
+                            8,
+                            9
+                          ]
+                        },
+                        "type": "address.business",
+                        "isContainer": false,
+                        "countryCode": "GB"
+                      }
+                    ]
+                  },
+                  "DetailAddress": {
+                    "summary": "Select an address from a what3words search",
+                    "value": [
+                      {
+                        "primary": {
+                          "text": "Blaiz, 65 Alfred Rd",
+                          "highlights": [
+                            7,
+                            8,
+                            10,
+                            15,
+                            17,
+                            18
+                          ]
+                        },
+                        "populatedRecord": {
+                          "lines": [
+                            "Blaiz Ltd",
+                            "65 Alfred Road",
+                            "London",
+                            "W2 5EU",
+                            "United Kingdom"
+                          ],
+                          "label": "Blaiz Ltd\n65 Alfred Road\nLondon\nW2 5EU\nUnited Kingdom"
+                        },
+                        "countryCode": "GB"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Multiple reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "InvalidBias": {
+                    "summary": "Invalid what3words bias",
+                    "value": {
+                      "parameter": "biasTowards",
+                      "description": "The what3words address provided was not valid",
+                      "resolutionExamples": [
+                        {
+                          "value": "biasTowards=",
+                          "description": "No location biasing"
+                        },
+                        {
+                          "value": "biasTowards=52.95585,-1.14277",
+                          "description": "Bias results towards Beck St, Nottingham"
+                        }
+                      ]
+                    }
+                  },
+                  "MalformedBias": {
+                    "summary": "Malformed biasTowards",
+                    "value": {
+                      "error": {
+                        "parameter": "biasTowards",
+                        "description": "Expected a list of WGS84 `latitude, longitude` pairs separated by commas, however when split, the list was length 1",
+                        "resolutionExamples": [
+                          {
+                            "value": "biasTowards=",
+                            "description": "No location biasing"
+                          },
+                          {
+                            "value": "biasTowards=52.95585,-1.14277",
+                            "description": "Bias results towards Beck St, Nottingham"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "InvalidMaxResults": {
+                    "summary": "Invalid maxResults number",
+                    "value": {
+                      "error": {
+                        "parameter": "maxResults",
+                        "description": "Expected a number up to a maximum of 5, received <<number>>",
+                        "resolutionExamples": [
+                          {
+                            "value": "maxResults=5",
+                            "description": "Return up to 5 results"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "MissingKey": {
+                    "summary": "Missing API key",
+                    "value": {
+                      "parameter": "key",
+                      "description": "Invalid API key. Please provide a valid API key in the query string or as a header.",
+                      "resolutionExamples": [
+                        {
+                          "value": "key=xxxx",
+                          "description": "Pass your API key in the query string"
+                        },
+                        {
+                          "value": "key=xxxx",
+                          "description": "Pass your API key in as a HTTP header"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Free Trial Expired",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "FreeTrialExpired": {
+                    "summary": "Free Trial Expired",
+                    "value": {
+                      "parameter": "key",
+                      "description": "Your free trial has expired. Please sign in to your account and purchase credits to continue using the service.",
+                      "resolutionExamples": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "key",
+        "description": "The API key for authentication. You can create a Address Autocomplete API key in your [Swiftcomplete account](https://www.swiftcomplete.com/account/api).\nThe API key must be passed in the query string of the request. For example, `?key=your_api_key`.\n"
+      }
+    },
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "parameter": {
+            "type": "string",
+            "description": "The name of the invalid or missing parameter.",
+            "examples": [
+              "biasTowards",
+              "maxResults",
+              "key"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "description": "Explanation of the validation error.",
+            "examples": [
+              "The what3words address provided was not valid",
+              "Expected a number up to a maximum of 5, received <<number>>",
+              "Invalid API key. Please provide a valid API key in the query string or as a header."
+            ]
+          },
+          "resolutionExamples": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "examples": [
+                    "biasTowards=52.95585,-1.14277",
+                    "maxResults=5",
+                    "key=xxxx"
+                  ]
+                },
+                "description": {
+                  "type": "string",
+                  "examples": [
+                    "Bias results towards Beck St, Nottingham",
+                    "Return up to 5 results",
+                    "Pass your API key in the query string"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "SwiftLookupAPIResponse": {
+        "type": "object",
+        "properties": {
+          "primary": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "A simplified summary of the main part of the address.",
+                "examples": [
+                  "Nottingham"
+                ]
+              },
+              "highlights": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "description": "Indexes into primary.text to indicate matched characters.",
+                "examples": [
+                  [
+                    0,
+                    9
+                  ]
+                ]
+              }
+            }
+          },
+          "secondary": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "A summary of the secondary description of the address.",
+                "examples": [
+                  "East Midlands"
+                ]
+              },
+              "highlights": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "description": "Indexes into secondary.text to indicate matched characters.",
+                "examples": [
+                  []
+                ]
+              }
+            }
+          },
+          "type": {
+            "type": "string",
+            "description": "A hierarchical type description of the address.",
+            "examples": [
+              "place.settlement.large"
+            ]
+          },
+          "isContainer": {
+            "type": "boolean",
+            "description": "Does the address contains more addresses?",
+            "examples": [
+              true
+            ]
+          },
+          "container": {
+            "type": "string",
+            "description": "Object containing parameters for managing the autocomplete container.",
+            "examples": [
+              "V1;Sappers Farm Cottage"
+            ]
+          },
+          "geometry": {
+            "type": "object",
+            "properties": {
+              "centre": {
+                "type": "object",
+                "properties": {
+                  "lat": {
+                    "type": "number",
+                    "description": "Latitude of the centre point of the address.",
+                    "examples": [
+                      52.9562
+                    ]
+                  },
+                  "lon": {
+                    "type": "number",
+                    "description": "Longitude of the centre point of the address.",
+                    "examples": [
+                      -1.1512
+                    ]
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "Type of the centre point of the address.",
+                    "examples": [
+                      "address"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "distance": {
+            "type": "object",
+            "properties": {
+              "units": {
+                "type": "string",
+                "description": "Unit of measurement for distance.",
+                "examples": [
+                  "mi"
+                ]
+              },
+              "measurement": {
+                "type": "number",
+                "description": "Distance of the address from provided coordinates.",
+                "examples": [
+                  5.5
+                ]
+              },
+              "type": {
+                "type": "string",
+                "description": "Type of distance",
+                "examples": [
+                  "biasTowards"
+                ]
+              },
+              "geometry": {
+                "type": "object",
+                "description": "Centre of the coordinates.",
+                "examples": [
+                  {
+                    "centre": {
+                      "lat": 51.4508,
+                      "lon": -3.224277
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "populatedRecord": {
+            "type": "object",
+            "description": "Contains lines, licenses, and label.",
+            "properties": {
+              "lines": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The fully formatted postal address, line by line.",
+                "examples": [
+                  [
+                    "Tile House",
+                    "CF64 4HE",
+                    "United Kingdom"
+                  ]
+                ]
+              },
+              "licenses": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The licenses of the addresses",
+                "examples": [
+                  [
+                    "data provided - licenses"
+                  ]
+                ]
+              },
+              "label": {
+                "type": "string",
+                "description": "The fully formatted postal address, in a label format.",
+                "examples": [
+                  "Tile House\nCF64 4HE\nUnited Kingdom"
+                ]
+              }
+            }
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "An ISO 3166-1 alpha-2 country code.",
+            "examples": [
+              "GB"
+            ]
+          },
+          "record": {
+            "type": "object",
+            "description": "A text description of the result.",
+            "properties": {
+              "what3words": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "description": "A what3words address.",
+                    "examples": [
+                      "///filled.count.soap"
+                    ]
+                  },
+                  "highlights": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "description": "Indexes into what3words.text to indicate matched characters.",
+                    "examples": [
+                      [
+                        0,
+                        19
+                      ]
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

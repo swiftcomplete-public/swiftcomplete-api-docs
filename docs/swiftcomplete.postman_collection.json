@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "2fdaec75-880b-4d9d-bbd1-0566930fb46c",
+		"name": "Swiftcomplete",
+		"description": "<img src=\"https://content.pstmn.io/de604bb0-a4b7-4d62-a046-aa579ee32130/MTI2MTIgU3dpZnRjb21wbGV0ZSAtIEFkZHJlc3MgT3B0aW9ucy5naWY=\">\n\n## What is Swiftcomplete?\n\nSwiftcomplete is a software that allows you to look up and validate addresses, postcodes and coordinates. It is designed to be integrated into your address capture flow, for example on e-commerce checkout pages. Swiftcomplete is uniquely designed to return a valid address as fast as possible.\n\n## Why use Swiftcomplete?\n\nImproves quality of address data\n\n- If addresses aren’t checked and validated then there is no guarantee they can be used successfully for deliveries or geolocating.\n    \n- Poor addresses = missed or failed deliveries, costing businesses money and creating poor customer experience.\n    \n\n## Easy to set up and run\n\n- Credit packs from £10 (3p per address) (Bespoke enterprise solutions available)\n    \n- Plugins available for BigCommerce and [WooCommerce](https://swiftcomplete.notion.site/Swiftcomplete-WooCommerce-address-autocomplete-1a466db17f3b8018bc4ce65f85f6c852)\n    \n- Documentation for API set-up: click [here](https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466db17f3b80a18a63dced29d4cfb5?pvs=4)\n    \n\n## Simplify your user experience\n\n- Address validation makes address-entry quicker, easier and less error-prone.\n    \n- Swiftcomplete UI is specifically designed to match a customer with their deliverable address as quickly as possible\n    \n\n## Key Features\n\n- Fast: Operates with low latency\n    \n- Comprehensive: Combines high quality geospatial databases and multi-residence addresses for best possible address matching.\n    \n- Easy to use: Simple, effective user interface\n    \n- Cost-effective: Credit packs from £10 (3p per address) (Bespoke enterprise solutions available)\n    \n- what3words entry: included as standard\n    \n\n<img src=\"https://content.pstmn.io/92d056d3-a788-410c-9b03-1bca744379c4/aW1hZ2UucG5n\" alt=\"Example%20of%20Swiftcomplete%20Address%20Validation%20Flows\" width=\"1918\" height=\"994\">",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17609323",
+		"_collection_link": "https://w3w-product-team.postman.co/workspace/Swiftcomplete-Address-AutoCompl~15f0f8c3-3f86-41c0-ac17-0aff8f4b8dfd/collection/17609323-2fdaec75-880b-4d9d-bbd1-0566930fb46c?action=share&source=collection_link&creator=17609323"
+	},
+	"item": [
+		{
+			"name": "Address Autocomplete API",
+			"item": [
+				{
+					"name": "what3words search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.swiftcomplete.com/v1/places/?key=Enter API key&biasTowards=///fileld.count.s&container=V1;65|ALFRED Road|LONDON|W2;51.521198;-0.196309&searchFor=what3words,address&countries=gb&maxDistance=3000&maxResults=100&populateIndex=0&populateLineCount=7&distanceUnits=metric&lineFormat0=Company&lineFormat1=SubBuilding, BuildingName&lineFormat2=BuildingNumber SecondaryRoad, Road, PoBox&lineFormat3=TertiaryLocality, SecondaryLocality&lineFormat4=PrimaryLocality&lineFormat5=POSTCODE&lineFormat6=PrimaryCountry&lineFormat7=what3words",
+							"protocol": "https",
+							"host": [
+								"api",
+								"swiftcomplete",
+								"com"
+							],
+							"path": [
+								"v1",
+								"places",
+								""
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "Enter API key",
+									"description": "API key for Swiftcomplete Address Autocomplete."
+								},
+								{
+									"key": "biasTowards",
+									"value": "///fileld.count.s",
+									"description": "The API will prioritise results near your approximate location (determined by your IP address) if this parameter is not provided. \nEither a what3words location (only if what3words has been enabled on this API key, in the format \"///word1.word2.word3\") or a WGS84 coordinate (in the format \"latitude,longitude\")"
+								},
+								{
+									"key": "container",
+									"value": "V1;65|ALFRED Road|LONDON|W2;51.521198;-0.196309",
+									"description": "Restricts the search to a specific container (e.g., traditional address, postcode, coordinates)."
+								},
+								{
+									"key": "searchFor",
+									"value": "what3words,address",
+									"description": "A comma-separated list of result types to filter results. \nTypes are hierarchical, so providing \"transit\" includes everything in the transit category, \"transit.airport\" only returns airports and \"transit.airport.large\" only returns the largest airports. View the table linked to this page."
+								},
+								{
+									"key": "countries",
+									"value": "gb",
+									"description": "Comma-separated list of ISO 316601 alpha-2 country codes to restrict search within.\nIf the parameter is not provided the API will search for all the available countries."
+								},
+								{
+									"key": "maxDistance",
+									"value": "3000",
+									"description": "Limits the search to a maximum distance (in meters) from the biasTowards location."
+								},
+								{
+									"key": "maxResults",
+									"value": "100",
+									"description": "Maximum number of results to display (in general are between 1-5.\nNote If the results are more than maxResults=100 than pageFrom parameter needs to be used to loop the results per 100 records."
+								},
+								{
+									"key": "populateIndex",
+									"value": "0",
+									"description": "Index for populating the autocomplete field.\nUsed to obtain detailed information about a result in the response array. For example, to obtain full information for the first record, pass populatedIndex=0, or for the second, pass populatedIndex=1 and so on."
+								},
+								{
+									"key": "populateLineCount",
+									"value": "7",
+									"description": "Number of lines of the full address. Max 8."
+								},
+								{
+									"key": "distanceUnits",
+									"value": "metric",
+									"description": "Unit of measurement for distance display\nmetric → Return distance in kilometres, unless under 1km in which case metres are returned\nimperial → Return distance in miles, unless under 0.1 miles in which case feet are returned"
+								},
+								{
+									"key": "lineFormat0",
+									"value": "Company",
+									"description": "Line 0 of the full address selected by the populateIndex is assigned to Company, if it is mentioned it would should only this record to the lines 0"
+								},
+								{
+									"key": "lineFormat1",
+									"value": "SubBuilding, BuildingName",
+									"description": "Line 1 of the full address selected by the populateIndex is assigned to SubBuilding, BuildingName, if it is mentioned it would should only this record to the lines 1"
+								},
+								{
+									"key": "lineFormat2",
+									"value": "BuildingNumber SecondaryRoad, Road, PoBox",
+									"description": "Line 2 of the full address selected by the populateIndex is assigned to BuildingNumber SecondaryRoad, Road, PoBox, if it is mentioned it would should only this record to the lines 2"
+								},
+								{
+									"key": "lineFormat3",
+									"value": "TertiaryLocality, SecondaryLocality",
+									"description": "Line 3 of the full address selected by the populateIndex is assigned to TertiaryLocality, SecondaryLocality, if it is mentioned it would should only this record to the lines 3"
+								},
+								{
+									"key": "lineFormat4",
+									"value": "PrimaryLocality",
+									"description": "Line 4 of the full address selected by the populateIndex is assigned to PrimaryLocality, if it is mentioned it would should only this record to the lines 4"
+								},
+								{
+									"key": "lineFormat5",
+									"value": "POSTCODE",
+									"description": "Line 5 of the full address selected by the populateIndex is assigned to POSTCODE, if it is mentioned it would should only this record to the lines 5"
+								},
+								{
+									"key": "lineFormat6",
+									"value": "PrimaryCountry",
+									"description": "Line 6 of the full address selected by the populateIndex is assigned to PrimaryCountry, if it is mentioned it would should only this record to the lines 6"
+								},
+								{
+									"key": "lineFormat7",
+									"value": "what3words",
+									"description": "Line 7 of the full address selected by the populateIndex is assigned to what3words, if it is mentioned it would should only this record to the lines 7"
+								},
+								{
+									"key": "pageFrom",
+									"value": "2",
+									"description": "Specifies the starting index for paginated results.\t",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This API call is used to perform a detailed search for what3words addresses and traditional addresses within a specific geographic area. The results are biased toward a given what3words location (biasTowards=///fileld.count.s) and include detailed address components formatted according to the specified `lineFormat`. The search is further refined by limiting the distance, result count, and specifying the desired output format."
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.swiftcomplete.com/v1/places/?key=•••••••&biasTowards=///fileld.count.s&container=&searchFor=what3words,address&countries=gb&maxDistance=3000&maxResults=100&populateIndex=0&populateLineCount=7&distanceUnits=metric&lineFormat0=Company&lineFormat1=SubBuilding, BuildingName&lineFormat2=BuildingNumber SecondaryRoad, Road, PoBox&lineFormat3=TertiaryLocality, SecondaryLocality&lineFormat4=PrimaryLocality&lineFormat5=POSTCODE&lineFormat6=PrimaryCountry&lineFormat7=what3words",
+									"protocol": "https",
+									"host": [
+										"api",
+										"swiftcomplete",
+										"com"
+									],
+									"path": [
+										"v1",
+										"places",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "•••••••",
+											"description": "API key for Swiftcomplete Address Autocomplete."
+										},
+										{
+											"key": "biasTowards",
+											"value": "///fileld.count.s",
+											"description": "The API will prioritise results near your approximate location (determined by your IP address) if this parameter is not provided. \nEither a what3words location (only if what3words has been enabled on this API key, in the format \"///word1.word2.word3\") or a WGS84 coordinate (in the format \"latitude,longitude\")"
+										},
+										{
+											"key": "container",
+											"value": "",
+											"description": "Restricts the search to a specific container (e.g., traditional address, postcode, coordinates)."
+										},
+										{
+											"key": "searchFor",
+											"value": "what3words,address",
+											"description": "A comma-separated list of result types to filter results. \nTypes are hierarchical, so providing \"transit\" includes everything in the transit category, \"transit.airport\" only returns airports and \"transit.airport.large\" only returns the largest airports. View the table linked to this page."
+										},
+										{
+											"key": "countries",
+											"value": "gb",
+											"description": "Comma-separated list of ISO 316601 alpha-2 country codes to restrict search within.\nIf the parameter is not provided the API will search for all the available countries."
+										},
+										{
+											"key": "maxDistance",
+											"value": "3000",
+											"description": "Limits the search to a maximum distance (in meters) from the biasTowards location."
+										},
+										{
+											"key": "maxResults",
+											"value": "100",
+											"description": "Maximum number of results to display (in general are between 1-5.\nNote If the results are more than maxResults=100 than pageFrom parameter needs to be used to loop the results per 100 records."
+										},
+										{
+											"key": "populateIndex",
+											"value": "0",
+											"description": "Index for populating the autocomplete field.\nUsed to obtain detailed information about a result in the response array. For example, to obtain full information for the first record, pass populatedIndex=0, or for the second, pass populatedIndex=1 and so on."
+										},
+										{
+											"key": "populateLineCount",
+											"value": "7",
+											"description": "Number of lines of the full address. Max 8."
+										},
+										{
+											"key": "distanceUnits",
+											"value": "metric",
+											"description": "Unit of measurement for distance display\nmetric → Return distance in kilometres, unless under 1km in which case metres are returned\nimperial → Return distance in miles, unless under 0.1 miles in which case feet are returned"
+										},
+										{
+											"key": "lineFormat0",
+											"value": "Company",
+											"description": "Line 0 of the full address selected by the populateIndex is assigned to Company, if it is mentioned it would should only this record to the lines 0"
+										},
+										{
+											"key": "lineFormat1",
+											"value": "SubBuilding, BuildingName",
+											"description": "Line 1 of the full address selected by the populateIndex is assigned to SubBuilding, BuildingName, if it is mentioned it would should only this record to the lines 1"
+										},
+										{
+											"key": "lineFormat2",
+											"value": "BuildingNumber SecondaryRoad, Road, PoBox",
+											"description": "Line 2 of the full address selected by the populateIndex is assigned to BuildingNumber SecondaryRoad, Road, PoBox, if it is mentioned it would should only this record to the lines 2"
+										},
+										{
+											"key": "lineFormat3",
+											"value": "TertiaryLocality, SecondaryLocality",
+											"description": "Line 3 of the full address selected by the populateIndex is assigned to TertiaryLocality, SecondaryLocality, if it is mentioned it would should only this record to the lines 3"
+										},
+										{
+											"key": "lineFormat4",
+											"value": "PrimaryLocality",
+											"description": "Line 4 of the full address selected by the populateIndex is assigned to PrimaryLocality, if it is mentioned it would should only this record to the lines 4"
+										},
+										{
+											"key": "lineFormat5",
+											"value": "POSTCODE",
+											"description": "Line 5 of the full address selected by the populateIndex is assigned to POSTCODE, if it is mentioned it would should only this record to the lines 5"
+										},
+										{
+											"key": "lineFormat6",
+											"value": "PrimaryCountry",
+											"description": "Line 6 of the full address selected by the populateIndex is assigned to PrimaryCountry, if it is mentioned it would should only this record to the lines 6"
+										},
+										{
+											"key": "lineFormat7",
+											"value": "what3words",
+											"description": "Line 7 of the full address selected by the populateIndex is assigned to what3words, if it is mentioned it would should only this record to the lines 7"
+										},
+										{
+											"key": "pageFrom",
+											"value": "2",
+											"description": "Specifies the starting index for paginated results.\t",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "[\n    {\n        \"primary\": {\n            \"text\": \"Blaiz, 65 Alfred Rd\",\n            \"highlights\": [\n                7,\n                8,\n                10,\n                15,\n                17,\n                18\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"geometry\": {\n            \"centre\": {\n                \"lat\": 51.521198,\n                \"lon\": -0.196334,\n                \"type\": \"postcode\"\n            }\n        },\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"populatedRecord\": {\n            \"lines\": [\n                \"Blaiz Ltd\",\n                \"\",\n                \"65 Alfred Road\",\n                \"\",\n                \"London\",\n                \"W2 5EU\",\n                \"United Kingdom\",\n                \"///filled.count.soap\"\n            ],\n            \"licenses\": [],\n            \"label\": \"Blaiz Ltd\\n65 Alfred Road\\nLONDON\\nW2 5EU\\nUnited Kingdom\",\n            \"data\": {\n                \"postalCode\": {\n                    \"text\": \"W2 5EU\",\n                    \"isFullPostalCode\": true,\n                    \"gb\": {\n                        \"incode\": {\n                            \"text\": \"5EU\"\n                        },\n                        \"postcodeSector\": {\n                            \"text\": \"5\"\n                        },\n                        \"postcodeUnit\": {\n                            \"text\": \"EU\"\n                        },\n                        \"outcode\": {\n                            \"text\": \"W2\"\n                        },\n                        \"postcodeArea\": {\n                            \"text\": \"W\"\n                        },\n                        \"postcodeDistrict\": {\n                            \"text\": \"2\"\n                        }\n                    }\n                },\n                \"business\": {\n                    \"name\": {\n                        \"text\": \"Blaiz Ltd\"\n                    }\n                },\n                \"subBuilding\": null,\n                \"building\": {\n                    \"name\": null,\n                    \"number\": {\n                        \"text\": \"65\"\n                    }\n                },\n                \"road\": {\n                    \"primary\": {\n                        \"text\": \"Alfred Road\"\n                    },\n                    \"secondary\": null\n                },\n                \"poBox\": null,\n                \"country\": {\n                    \"primary\": {\n                        \"text\": \"United Kingdom\",\n                        \"iso3166-2\": \"GB\"\n                    },\n                    \"secondary\": null\n                },\n                \"place\": {\n                    \"primary\": {\n                        \"text\": \"LONDON\"\n                    },\n                    \"secondary\": null,\n                    \"tertiary\": null\n                },\n                \"admin\": {\n                    \"stateProvince\": null,\n                    \"stateProvinceAbbreviation\": null,\n                    \"gb\": {\n                        \"county\": null,\n                        \"ceremonialCounty\": {\n                            \"text\": \"Greater London\",\n                            \"code\": null\n                        },\n                        \"region\": {\n                            \"text\": \"London\",\n                            \"code\": \"E12000007\"\n                        },\n                        \"ward\": {\n                            \"text\": \"Westbourne\",\n                            \"code\": \"E05013809\"\n                        },\n                        \"district\": null,\n                        \"londonBorough\": {\n                            \"text\": \"Westminster\",\n                            \"code\": \"E09000033\"\n                        },\n                        \"innerOuterLondon\": {\n                            \"text\": \"Inner London\",\n                            \"code\": \"E13000001\"\n                        },\n                        \"unitaryAuthority\": null\n                    }\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Carnot, 65 Alfred Rd\",\n            \"highlights\": [\n                8,\n                9,\n                11,\n                16,\n                18,\n                19\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Craster, 65 Alfred Rd\",\n            \"highlights\": [\n                9,\n                10,\n                12,\n                17,\n                19,\n                20\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Daisy Global, 65 Alfred Rd\",\n            \"highlights\": [\n                14,\n                15,\n                17,\n                22,\n                24,\n                25\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Davina Combe, 65 Alfred Rd\",\n            \"highlights\": [\n                14,\n                15,\n                17,\n                22,\n                24,\n                25\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Great Western Studios, 65 Alfred Rd\",\n            \"highlights\": [\n                23,\n                24,\n                26,\n                31,\n                33,\n                34\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Italicus, 65 Alfred Rd\",\n            \"highlights\": [\n                10,\n                11,\n                13,\n                18,\n                20,\n                21\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Italspirits, 65 Alfred Rd\",\n            \"highlights\": [\n                13,\n                14,\n                16,\n                21,\n                23,\n                24\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Moxon Architects, 65 Alfred Rd\",\n            \"highlights\": [\n                18,\n                19,\n                21,\n                26,\n                28,\n                29\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Nishura, 65 Alfred Rd\",\n            \"highlights\": [\n                9,\n                10,\n                12,\n                17,\n                19,\n                20\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Obatan Llc, 65 Alfred Rd\",\n            \"highlights\": [\n                12,\n                13,\n                15,\n                20,\n                22,\n                23\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Patrick Lewis Architects, 65 Alfred Rd\",\n            \"highlights\": [\n                26,\n                27,\n                29,\n                34,\n                36,\n                37\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Richard F Gill & Associates, 65 Alfred Rd\",\n            \"highlights\": [\n                29,\n                30,\n                32,\n                37,\n                39,\n                40\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Run For The Hills, 65 Alfred Rd\",\n            \"highlights\": [\n                19,\n                20,\n                22,\n                27,\n                29,\n                30\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Solid Floor, 65 Alfred Rd\",\n            \"highlights\": [\n                13,\n                14,\n                16,\n                21,\n                23,\n                24\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"Stephen Fletcher Architects, 65 Alfred Rd\",\n            \"highlights\": [\n                29,\n                30,\n                32,\n                37,\n                39,\n                40\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"The Westbourne Drink Co, 65 Alfred Rd\",\n            \"highlights\": [\n                25,\n                26,\n                28,\n                33,\n                35,\n                36\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    },\n    {\n        \"primary\": {\n            \"text\": \"What3words, 65 Alfred Rd\",\n            \"highlights\": [\n                12,\n                13,\n                15,\n                20,\n                22,\n                23\n            ]\n        },\n        \"secondary\": {\n            \"text\": \"London, W2 5EU\",\n            \"highlights\": [\n                0,\n                5,\n                8,\n                9\n            ]\n        },\n        \"type\": \"address.business\",\n        \"isContainer\": false,\n        \"distance\": {\n            \"units\": \"m\",\n            \"measurement\": 2,\n            \"type\": \"biasTowards\",\n            \"geometry\": {\n                \"centre\": {\n                    \"lat\": 51.521198,\n                    \"lon\": -0.196309\n                }\n            }\n        },\n        \"countryCode\": \"GB\",\n        \"record\": {\n            \"what3words\": {\n                \"text\": \"///filled.count.soap\",\n                \"highlights\": []\n            }\n        }\n    }\n]"
+						}
+					]
+				}
+			],
+			"description": "## Overview\n\nFast, accurate postal address validation. The Address Autocomplete API provides real-time address suggestions as users type, eliminating typos and mistakes and reducing the time it takes to find accurate postal addresses. If you are looking for a general places or location search, see our Address Autocomplete API Documentation. If you need any help integrating our Address Autocomplete API into your website or application, get in touch and one of our product experts will help get you started.\n\n## Data Coverage\n\nThe following countries are available in the Address Autocomplete API:\n\n- 🇬🇧 United Kingdom\n    \n\n## Authentication\n\nEach request must be authenticated with a Address Autocomplete API key, which you can create in your Swiftcomplete account:\n\n1. [Sign in](https://www.swiftcomplete.com/account/login/) if you're already registered, or [create a Swiftcomplete account](https://www.swiftcomplete.com/account/register) if you're new to the service.\n    \n2. Go to the [API section](https://www.swiftcomplete.com/account/api) and create a **Address Autocomplete API Key**.\n    \n\n## Integration Options\n\nOnce you've created a Address Autocomplete API Key, you can build a server-side integration using the API.\n\n## API Integration\n\nIntegrate the Swiftcomplete Address Autocomplete API for general location and place search functionality.\n\n### API Request Example\n\n```\nGET https://api.swiftcomplete.com/v1/places/?key=INSERT_KEY_HERE&text=Nottingham&countries=gb\n\n ```\n\n### API Parameters\n\n| Parameter Name | Value | Type | Description |\n| --- | --- | --- | --- |\n| biasTowards | coordinates, what3words | Number, String | The API will prioritise results near your approximate location (determined by your IP address) if this parameter is not provided. Either a what3words location (only if what3words has been enabled on this API key, in the format \"///word1.word2.word3\") or a WGS84 coordinate (in the format \"latitude,longitude\") |\n| container | V1;65 | ALFRED Road | LONDON |\n| countries | 'ca,us' | String | Comma-separated list of ISO 316601 alpha-2 country codes to restrict search within.If the parameter is not provided the API will search for all the available countries. |\n| distanceUnits | ‘metric’ or ‘imperial’ | String | Unit of measurement for distance displaymetric → Return distance in kilometres, unless under 1km in which case metres are returnedimperial → Return distance in miles, unless under 0.1 miles in which case feet are returned |\n| key | null | String | API key for Swiftcomplete Address Autocomplete. |\n| maxDistance | 3000 | Number | A distance in km to limit the search radius from the biasTowards coordinate. |\n| maxResults | 5 ( for address records)  <br>3 (for what3words records) | Number | Maximum number of results to display.Note If the results are more than maxResults=100 than pageFrom parameter needs to be used to loop the results per 100 records. |\n| populateIndex | \\-1 | Number | Index for populating the autocomplete field.Used to obtain detailed information about a result in the response array. For example, to obtain full information for the first record, pass populatedIndex=0, or for the second, pass populatedIndex=1 and so on.The usual flow is to obtain a list of suggestions by making an API request without populatedIndex specified, and then allow the user to select a result in the list by passing populatedIndex in a second request.For integrations where a user isn't present to select a result (e.g. data cleansing or batch processing), simply pass populatedIndex=0 to automatically obtain detailed information about the most relevant result in the list. |\n| populateLineCount | 5 | Number | Number of lines to populate in the autocomplete field. |\n| searchFor | 'what3words, address, place, road, transit' | String | A comma-separated list of result types to filter results. Types are hierarchical, so providing \"transit\" includes everything in the transit category, \"transit.airport\" only returns airports and \"transit.airport.large\" only returns the largest airports. |\n| text | w25eu or 65 alfred rd or filled.count.soap or London | String | A full or partial search term such as a postcode, street, city or what3words. |\n| groupResults | true | Boolean | Used when nothing is being typed on the search field, Only when the query is empty. |\n| pageFrom | 1 | Number | Indicates the starting page for results. |\n\nUse the hierarchical types to filter results to only include exactly what you're looking for.\n\nFor example, pass \"place.area.country,transit\" to only search for country names and public transport.\n\nThe API will search for all data types if searchFor is not provided.\n\n### Available `searchFor` Types\n\n| Level | Type | Description |\n| --- | --- | --- |\n| **First level** |  |  |\n|  | what3words | All what3words addresses |\n|  | address | All traditional addresses |\n|  | place | Postcodes and all types of settlements (cities, towns, villages, counties, provinces, etc.) |\n|  | road | All types of roads |\n|  | transit | All types of public transport |\n| **Second level** |  |  |\n|  | place.area | Postcodes and counties, states, etc. |\n|  | place.settlement | Cities, towns, villages, etc. |\n|  | transit.airport | Airports |\n|  | transit.metro | Metro and London Underground stops |\n|  | transit.railway | Railway stations |\n|  | transit.tram | Tram stops |\n| **Third level** |  |  |\n|  | place.area.county | Counties |\n|  | place.area.postcode | Postcodes, ZIP codes, etc. |\n|  | place.area.country | Countries |\n|  | place.area.state | States |\n|  | place.area.province | Provinces |\n|  | place.area.territory | Territories |\n|  | place.settlement.large | Large cities |\n|  | place.settlement.medium | Cities & towns |\n|  | place.settlement.small | Districts, villages & hamlets |\n|  | transit.airport.large | Large international airports |\n|  | transit.airport.medium | Medium regional airports |\n|  | transit.metro.station.gblondondlr | London DLR stations |\n|  | transit.metro.station.gblondonunderground | London Underground stations |\n|  | transit.tram.stop.gbcroydontramlink | London tram stops (Croydon Tramlink) |\n|  | transit.tram.stop.gbedinburghtrams | Edinburgh Tram stops |\n|  | transit.tram.stop.gbmanchestermetrolink | Manchester Metrolink tram stops |\n|  | transit.tram.stop.gbnottinghamnet | Nottingham NET tram stops |\n|  | transit.tram.stop.gbsheffieldsupertram | Sheffield Supertram tram stops |\n|  | transit.tram.stop.gbwestmidlandsmetro | West Midlands Metro tram stops |\n\n#### API Response Fields (example)\n\n``` json\n[\n    {\n        \"primary\": { \"text\": \"Nottingham\", \"highlights\": [0,9] },\n        \"secondary\": { \"text\": \"East Midlands\", \"highlights\": [] },\n        \"type\": \"place.settlement.large\",\n        \"record\": {\n            \"country\": { \"text\": \"England\" },\n            \"region\": { \"text\": \"East Midlands\" },\n            \"county\": { \"text\": \"City of Nottingham\" },\n            \"postcode\": { \"text\": \"NG1\" },\n            \"primarylocality\": { \"text\": \"Nottingham\", \"highlights\": [0,9] }\n        },\n        \"geometry\": {\n            \"centre\": { \"lat\": 52.9562, \"lon\": -1.1512 }\n        },\n        \"distance\": {\n            \"units\": \"mi\",\n            \"measurement\": 5.5,\n            \"from\": { \"type\": \"biasLocation\", \"biasTowardsIndex\": 0 }\n        }\n    }\n]\n\n ```\n\n| Field | Type | Description | Example |\n| --- | --- | --- | --- |\n| primary.text | string | A simplified summary of the main part of the address. | Nottingham |\n| primary.highlights | int\\[\\] | Indexes into primary.text to indicate matched characters. | \\[0,9\\] |\n| secondary.text | string | A summary of the secondary description of the address. | East Midlands |\n| secondary.highlights | int\\[\\] | Indexes into secondary.text to indicate matched characters. | \\[\\] |\n| type | string | A hierarchical type description of the address. | place.settlement.large or what3words |\n| record | object | A text description of the result. | {\"country\": { \"text\": \"England\" }, \"postcode\": { \"text\": \"NG1\" }} |\n| geometry.centre.lat | float | Latitude of the centre point of the address. | 52.9562 |\n| geometry.centre.lon | float | Longitude of the centre point of the address. | \\-1.1512 |\n| geometry.centre.type | string | Type of the centre point of the address. | address |\n| distance.units | string | Unit of measurement for distance. | mi |\n| distance.measurement | float | Distance of the address from provided coordinates. | 5.5 |\n| distance.type | string | Type of distance | biasTowards |\n| distance.geometry | object | Centre of the coordinates | { \"centre\": { \"lat\": 51.4508, \"lon\": -3.224277 } } |\n| isContainer | boolean | Does the address contains more addresses? | TRUE |\n| container | string | Object containing parameters for managing the autocomplete container. | V1;Sappers Farm Cottage |\n| countryCode | string | An ISO 3166-1 alpha-2 country code. | GB |\n| populatedRecord | object | Contains lines, licenses, and label. | { \"lines\": \\[ \"Tile House\", \"CF64 4HE\", \"United Kingdom\" \\] } |\n| populatedRecord.lines | string | The fully formatted postal address, line by line. |  |\n| populatedRecord.label | string | The fully formatted postal address, in a label format. |  |\n| populatedRecord.licenses | string | The licenses of the addresses | data provided - licenses |\n\n## Conclusion\n\nThe Swiftcomplete Address Autocomplete API enhances address accuracy, reduces input errors, and speeds up form completion. Use it via JavaScript integration or API calls for a seamless address lookup experience."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "what3wordsText",
+			"value": "///fileld.count.s"
+		},
+		{
+			"key": "what3wordsContainer",
+			"value": ""
+		},
+		{
+			"key": "postCodeContainer",
+			"value": ""
+		},
+		{
+			"key": "addressContainer",
+			"value": ""
+		}
+	]
+}
