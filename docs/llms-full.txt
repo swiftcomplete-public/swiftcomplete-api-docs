@@ -1,8 +1,8 @@
 # swiftcomplete llms.txt
 
-## **Swiftcomplete SwiftLookup API (v1)**
+## **Swiftcomplete Address Autocomplete API (v1)**
 
-The **SwiftLookup API** by Swiftcomplete is a RESTful API that provides fast, accurate postal address autocomplete and validation. It supports searching for traditional addresses, what3words addresses, postcodes, and more—returning precise and structured address suggestions in real time as users type. It is ideal for improving form accuracy, reducing input errors, and enhancing location-related UX across web and mobile platforms.
+The **Address Autocomplete API** by Swiftcomplete is a RESTful API that provides fast, accurate postal address autocomplete and validation. It supports searching for traditional addresses, what3words addresses, postcodes, and more—returning precise and structured address suggestions in real time as users type. It is ideal for improving form accuracy, reducing input errors, and enhancing location-related UX across web and mobile platforms.
 
 ---
 
@@ -31,7 +31,7 @@ The **SwiftLookup API** by Swiftcomplete is a RESTful API that provides fast, ac
 - [API Overview](https://www.docs.swiftcomplete.com/openapi.yaml)
 - [LLMs Text](https://www.docs.swiftcomplete.com/llms.txt)
 - [LLMs Full Text](https://www.docs.swiftcomplete.com/llms-full.txt)
-- [JavaScript Searchbox Integration](https://www.notion.so/Swiftcomplete-SwiftLookup-API-Javascript-1a066db17f3b8076bc67f00c1ca24742?pvs=21)
+- [JavaScript Searchbox Integration](https://swiftcomplete.notion.site/)
 - [WooCommerce Integration](https://www.notion.so/WooCommerce-plugin-for-Swiftcomplete-1a466db17f3b8018bc4ce65f85f6c852?pvs=4)
 - [BigCommerce Integration](https://www.notion.so/BigCommerce-Integration-for-Swiftcomplete-1d666db17f3b80e9bfceef1d64bea34d?pvs=4)
 
@@ -50,7 +50,7 @@ The **SwiftLookup API** by Swiftcomplete is a RESTful API that provides fast, ac
 - **Description:** Provides real-time address, postcode, and what3words suggestions based on user input.
 - **Method:** `GET`
 - **Parameters:**
-    - **`key`** (required, string, query): API key for Swiftcomplete SwiftLookup.
+    - **`key`** (required, string, query): API key for Swiftcomplete Address Autocomplete.
     - **`text`** (optional, string, query): A full or partial search term such as a postcode, street, city or what3words address.
     - **`biasTowards`** (optional, string, query): The API will prioritize results near your approximate location (determined by your IP address) if this parameter is not provided. Either a what3words location (only if what3words has been enabled on this API key, in the format "///word1.word2.word3") or a WGS84 coordinate (in the format "latitude,longitude").
     - **`container`** (optional, string, query): Restricts the search to a specific container (e.g., traditional address, postcode, coordinates). Examples: "V1;65|ALFRED Road|LONDON|W2;51.521198;-0.196309"
@@ -109,18 +109,18 @@ Source: [https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466d
 
 ## 1. JavaScript Searchbox & Autocomplete
 
-- **URL**: [https://swiftcomplete.notion.site/JavaScript-Searchbox-Autocomplete-12345abcdefg](https://swiftcomplete.notion.site/JavaScript-Searchbox-Autocomplete-12345abcdefg)
-- **Description**: Learn how to integrate the Swiftcomplete SwiftLookup JavaScript component into a website. Covers setting up the API key, initialising the control, setting parameters such as `searchFor`, `populateLineFormat`, and handling custom events like `swiftcomplete:swiftlookup:selected`. Useful for developers integrating location search into web platforms.
+- **URL**: [https://swiftcomplete.notion.site](https://swiftcomplete.notion.site)
+- **Description**: Learn how to integrate the Swiftcomplete Address Autocomplete JavaScript component into a website. Covers setting up the API key, initialising the control, setting parameters such as `searchFor`, `populateLineFormat`, and handling custom events like `swiftcomplete:swiftlookup:selected`. Useful for developers integrating location search into web platforms.
 
 ## 2. WooCommerce Address Autocomplete
 
-- **URL**: [https://swiftcomplete.notion.site/WooCommerce-Address-Autocomplete-12345abcdefg](https://swiftcomplete.notion.site/WooCommerce-Address-Autocomplete-12345abcdefg)
+- **URL**: [https://swiftcomplete.notion.site/WooCommerce-plugin-for-Swiftcomplete-1a466db17f3b8018bc4ce65f85f6c852](https://swiftcomplete.notion.site/WooCommerce-plugin-for-Swiftcomplete-1a466db17f3b8018bc4ce65f85f6c852)
 - **Description**: A step-by-step guide to integrating Swiftcomplete address autocomplete into WooCommerce checkout forms. Includes plugin setup, JavaScript binding, overriding default WooCommerce address fields, and customising `lineFormat` to include what3words if enabled.
 
-## 3. BigCommerce Integration for SwiftLookup
+## 3. BigCommerce Integration for Address Autocomplete
 
-- **URL**: [https://swiftcomplete.notion.site/BigCommerce-Integration-for-SwiftLookup-12345abcdefg](https://swiftcomplete.notion.site/BigCommerce-Integration-for-SwiftLookup-12345abcdefg)
-- **Description**: Walkthrough for adding Swiftcomplete to BigCommerce checkout and account pages. Demonstrates how to insert the SwiftLookup JavaScript component and ensure address lines are populated using Swiftcomplete’s API. It also explains how to bias results using the customer’s geolocation and apply component-level configuration.
+- **URL**: [https://swiftcomplete.notion.site/BigCommerce-Integration-for-Swiftcomplete-12345abcdefg](https://swiftcomplete.notion.site/BigCommerce-Integration-for-Swiftcomplete-12345abcdefg)
+- **Description**: Walkthrough for adding Swiftcomplete to BigCommerce checkout and account pages. Demonstrates how to insert the Address Autocomplete JavaScript component and ensure address lines are populated using Swiftcomplete’s API. It also explains how to bias results using the customer’s geolocation and apply component-level configuration.
 
 ## Tools & Guides
 
@@ -131,10 +131,10 @@ Source: [https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466d
 
 ## UI Integrations
 
-### 1. Swiftcomplete SwiftLookup API (JavaScript)
+### 1. Swiftcomplete Address Autocomplete API (JavaScript)
 
 - 📘 [Docs](https://swiftcomplete.notion.site/)
-- 🧠 Description: The SwiftLookup API provides realtime address suggestions as you type, eliminating typos and mistakes and reducing the time it takes to find accurate postal addresses.
+- 🧠 Description: The Address Autocomplete API provides realtime address suggestions as you type, eliminating typos and mistakes and reducing the time it takes to find accurate postal addresses.
 
 ### Data Coverage
 
@@ -142,7 +142,7 @@ Source: [https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466d
 
 ### Authentication
 
-To use the SwiftLookup API:
+To use the Address Autocomplete API:
 
 1. Sign in or register: [https://www.swiftcomplete.com/account/](https://www.swiftcomplete.com/account/)
 2. Generate your API key at: [https://www.swiftcomplete.com/account/api/](https://www.swiftcomplete.com/account/api/)
@@ -168,14 +168,14 @@ To use the SwiftLookup API:
 
 ```
 
-**Step 2: Attach SwiftLookup to Field**
+**Step 2: Attach Address Autocomplete to Field**
 Replace placeholders with your API key and textbox ID.
 
 Now copy this script and paste it directly after the previous code snippet, before the closing `<head>` tag.
 
-To get the script running, replace `INSERT_KEY_HERE` with your SwiftLookup API key, and replace `INSERT_TEXT_FIELD_ID_HERE` with the ID of an existing textbox on your page.
+To get the script running, replace `INSERT_KEY_HERE` with your Address Autocomplete API key, and replace `INSERT_TEXT_FIELD_ID_HERE` with the ID of an existing textbox on your page.
 
-The script initialises SwiftLookup on your existing textbox, restricts searching to Great Britain and logs the record and coordinates to the developer console when you select a result from the list of autocomplete suggestions.
+The script initialises Address Autocomplete on your existing textbox, restricts searching to Great Britain and logs the record and coordinates to the developer console when you select a result from the list of autocomplete suggestions.
 
 ```jsx
 <script type="text/javascript">
@@ -300,10 +300,10 @@ Integrate with business logic:
 
 Need help? Contact: [support@swiftcomplete.com](mailto:support@swiftcomplete.com)
 
-### 2. Swiftcomplete: WooCommerce Plugin for SwiftLookup
+### 2. Swiftcomplete: WooCommerce Plugin for Address Autocomplete
 
 - 📘 [Docs](https://www.notion.so/1a466db17f3b8018bc4ce65f85f6c852?pvs=21)
-- 🧠 Description: The Swiftcomplete SwiftLookup Plugin for WooCommerce adds real-time address autocomplete to billing and shipping fields during checkout. This integration helps capture accurate postal addresses, reduces errors, enhances user experience, and improves conversion rates.
+- 🧠 Description: The Swiftcomplete Address Autocomplete Plugin for WooCommerce adds real-time address autocomplete to billing and shipping fields during checkout. This integration helps capture accurate postal addresses, reduces errors, enhances user experience, and improves conversion rates.
 
 ---
 
@@ -335,7 +335,7 @@ If you do not have access, send this guide to your developer.
 
 ## 🧪 Installation
 
-1. **Download** the plugin ZIP from: [Download SwiftLookup Plugin](https://www.swiftcomplete.com/woocommerce/download/)
+1. **Download** the plugin ZIP from: [Download Address Autocomplete Plugin](https://www.swiftcomplete.com/woocommerce/download/)
 2. In WordPress Admin:
 Go to **Plugins → Add New → Upload Plugin**
 3. **Select** the downloaded `.zip` file (do not unzip).
@@ -398,7 +398,7 @@ Contact support:
 
 | Property | Value |
 | --- | --- |
-| Plugin Name | Swiftcomplete SwiftLookup for WooCommerce |
+| Plugin Name | Swiftcomplete for WooCommerce |
 | Plugin Size | ~7kb |
 | Dependencies | WooCommerce |
 | Compatibility | WordPress (latest), WooCommerce (latest) |
@@ -408,10 +408,10 @@ Contact support:
 
 ---
 
-### 3. Swiftcomplete: BigCommerce Integration for SwiftLookup
+### 3. Swiftcomplete: BigCommerce Integration for Swiftcomplete
 
 - 📘 [Docs](https://www.notion.so/1d666db17f3b80e9bfceef1d64bea34d?pvs=21)
-- 🧠 Description: The Swiftcomplete SwiftLookup Plugin for BigCommerce integrates address autocomplete into billing and shipping fields in the checkout experience. It improves form accuracy, accelerates address entry, and supports what3words integration.
+- 🧠 Description: The Swiftcomplete Address Autocomplete Plugin for BigCommerce integrates address autocomplete into billing and shipping fields in the checkout experience. It improves form accuracy, accelerates address entry, and supports what3words integration.
 
 ---
 
@@ -425,7 +425,7 @@ You need admin access to the BigCommerce dashboard with permissions to configure
 
 - [Create a Swiftcomplete account](https://www.swiftcomplete.com/account/register)
 - [Login to your Swiftcomplete dashboard](https://www.swiftcomplete.com/account/login)
-- Generate a SwiftLookup API key from the API section.
+- Generate a Address Autocomplete API key from the API section.
 
 ---
 
@@ -446,7 +446,7 @@ Select `Create a Script`. Configure it with the following:
 
 ### Step 3 – Add the Swiftcomplete Script
 
-Paste the SwiftLookup script snippet into the Script Contents field. This includes:
+Paste the Address Autocomplete script snippet into the Script Contents field. This includes:
 
 - Initialising the JS SDK via CDN (`swiftlookup.js`)
 - Creating the dynamic `<input>` for the address finder
@@ -576,7 +576,7 @@ To enable what3words support:
 - Add a new **Text Field**
 - Field name should include: `what3words address` or `w3w`
 
-SwiftLookup will populate this if a matching address is selected.
+Address Autocomplete will populate this if a matching address is selected.
 
 ---
 
@@ -584,7 +584,7 @@ SwiftLookup will populate this if a matching address is selected.
 
 The following BigCommerce fields are populated:
 
-| Field | SwiftLookup Format |
+| Field | Address Autocomplete Format |
 | --- | --- |
 | `companyInput` | `Company` |
 | `addressLine1Input` | `AddressLine1` |
@@ -596,9 +596,9 @@ The following BigCommerce fields are populated:
 
 ---
 
-## 🔁 SwiftLookup Settings
+## 🔁 Address Autocomplete Settings
 
-The embedded JavaScript uses these SwiftLookup settings:
+The embedded JavaScript uses these Address Autocomplete settings:
 
 | Parameter | Value |
 | --- | --- |
@@ -676,7 +676,7 @@ For help, contact: [support@swiftcomplete.com](mailto:support@swiftcomplete.com)
 
 ## 🧠 Suggested Prompts for LLMs
 
-Use these prompts with a large language model (LLM) like ChatGPT to generate integration-ready code using the Swiftcomplete SwiftLookup API and JavaScript SDK.
+Use these prompts with a large language model (LLM) like ChatGPT to generate integration-ready code using the Swiftcomplete Address Autocomplete API and JavaScript SDK.
 
 These prompts cover common use cases across different platforms and scenarios. You can modify field names and configuration to match your project’s needs.
 
@@ -729,7 +729,7 @@ These prompts cover common use cases across different platforms and scenarios. Y
 
 **Prompt:**
 
-> I want to integrate the Swiftcomplete SwiftLookup address autocomplete into a BigCommerce checkout page using the Script Manager. The script should:
+> I want to integrate the Swiftcomplete Address Autocomplete address autocomplete into a BigCommerce checkout page using the Script Manager. The script should:
 > 
 > - Insert an address finder field into the shipping address section (`checkoutShippingAddress`)
 > - Populate the following shipping fields:
@@ -749,7 +749,7 @@ These prompts cover common use cases across different platforms and scenarios. Y
 
 **Prompt:**
 
-> I want to integrate the Swiftcomplete SwiftLookup JavaScript SDK into my WooCommerce checkout page. It should:
+> I want to integrate the Swiftcomplete Address Autocomplete JavaScript SDK into my WooCommerce checkout page. It should:
 > 
 > - Add an address finder input at the top of the shipping address section
 > - Auto-populate WooCommerce checkout fields:

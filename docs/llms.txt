@@ -1,6 +1,6 @@
-# Swiftcomplete SwiftLookup API (v1)
+# Swiftcomplete Address Autocomplete API (v1)
 
-The **SwiftLookup API** provides fast, accurate postal address autocomplete and validation. It supports searching for traditional addresses, what3words addresses, postcodes, and more—returning precise and structured address suggestions in real time.
+The **Address Autocomplete API** provides fast, accurate postal address autocomplete and validation. It supports searching for traditional addresses, what3words addresses, postcodes, and more—returning precise and structured address suggestions in real time.
 
 ---
 
@@ -9,7 +9,7 @@ The **SwiftLookup API** provides fast, accurate postal address autocomplete and 
 - [API Overview](https://www.docs.swiftcomplete.com/openapi.yaml)
 - [LLMs Text](https://www.docs.swiftcomplete.com/llms.txt)
 - [LLMs Full Text](https://www.docs.swiftcomplete.com/llms-full.txt)
-- [JavaScript Searchbox Integration](https://www.notion.so/Swiftcomplete-SwiftLookup-API-Javascript-1a066db17f3b8076bc67f00c1ca24742?pvs=21)
+- [JavaScript Searchbox Integration](https://swiftcomplete.notion.site/)
 - [WooCommerce Integration](https://www.notion.so/WooCommerce-plugin-for-Swiftcomplete-1a466db17f3b8018bc4ce65f85f6c852?pvs=4)
 - [BigCommerce Integration](https://www.notion.so/BigCommerce-Integration-for-Swiftcomplete-1d666db17f3b80e9bfceef1d64bea34d?pvs=4)
 
@@ -80,7 +80,7 @@ The **SwiftLookup API** provides fast, accurate postal address autocomplete and 
 
 ## 🌟 Demo and Pricing
 
-- A live demo of the SwiftLookup API is available at:  
+- A live demo of the Address Autocomplete API is available at:  
   👉 **[www.swiftcomplete.com](https://www.swiftcomplete.com)**
 
 - For pricing details, visit:  
