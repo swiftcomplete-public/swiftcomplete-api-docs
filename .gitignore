@@ -10,3 +10,7 @@ Icon?
 # macOS resource forks
 .Spotlight-V100
 .Trashes
+
+# vsCode settings
+.vscode/
+.vscode/settings.json
