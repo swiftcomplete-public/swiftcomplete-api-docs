@@ -9,10 +9,11 @@ The **Address Autocomplete API** provides fast, accurate postal address autocomp
 - [API Overview](https://www.docs.swiftcomplete.com/openapi.yaml)
 - [LLMs Text](https://www.docs.swiftcomplete.com/llms.txt)
 - [LLMs Full Text](https://www.docs.swiftcomplete.com/llms-full.txt)
+- [Postman collection](https://www.docs.swiftcomplete.com/swiftcomplete.postman_collection.json)
 - [JavaScript Searchbox Integration](https://swiftcomplete.notion.site/)
 - [WooCommerce Integration](https://www.notion.so/WooCommerce-plugin-for-Swiftcomplete-1a466db17f3b8018bc4ce65f85f6c852?pvs=4)
-- [BigCommerce Integration](https://www.notion.so/BigCommerce-Integration-for-Swiftcomplete-1d666db17f3b80e9bfceef1d64bea34d?pvs=4)
-
+- [BigCommerce Script Integration](https://www.notion.so/BigCommerce-Integration-for-Swiftcomplete-1d666db17f3b80e9bfceef1d64bea34d?pvs=4)
+- [Ecwid Script Integration](https://www.notion.so/what3wordsnotion/Ecwid-Integration-for-Swiftcomplete-1f466db17f3b800a95ffef566d22b0f4)
 ---
 
 ## 🔑 API Key
