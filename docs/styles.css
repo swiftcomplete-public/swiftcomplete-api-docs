@@ -77,7 +77,6 @@ body {
     font-family: var(--font-family);
     font-size: var(--font-size-base);
     line-height: 1.6;
-    color: hsl(var(--gray-800));
     background-color: hsl(var(--gray-50));
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -133,7 +132,7 @@ body {
 
 .subtitle {
     font-size: var(--font-size-sm);
-    color: hsl(var(--gray-600));
+    color: var(--w3w-black);
     font-weight: 500;
 }
 
@@ -278,7 +277,7 @@ body {
 }
 
 .card-header p {
-    color: hsl(var(--gray-600));
+    color: var(--w3w-black);
     line-height: 1.6;
 }
 
@@ -358,7 +357,7 @@ body {
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    color: hsl(var(--gray-600));
+    color: var(--w3w-black);
     font-size: var(--font-size-sm);
 }
 
@@ -427,7 +426,7 @@ body {
 }
 
 .resource-card p {
-    color: hsl(var(--gray-600));
+    color: var(--w3w-black);
     font-size: var(--font-size-sm);
     line-height: 1.5;
 }
