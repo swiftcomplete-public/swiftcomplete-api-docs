@@ -42,24 +42,24 @@ info:
       </a>
 
       **Additional resources:**
-      - [Documentation](https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466db17f3b80a18a63dced29d4cfb5)
+      - [Documentation](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-api)
       - [Postman Collection](https://openapi.what3words.com/what3words.postman_collection.json)
   version: 1.0.0
   contact:
     name: Swiftcomplete Developer Support
-    url: https://www.swiftcomplete.com 
-    email: support@swiftcomplete.com
+    url: https://what3words.com/swiftcomplete
+    email: support@what3words.com
 servers:
   - url: "https://api.swiftcomplete.com/v1"
     description: "Swiftcomplete Address Autocomplete API"
 security:
   - ApiKeyAuth: []
 tags:
-  - name: Swiftcomplete Address Autocomplete API
+  - name: Address Autocomplete API
     description: "Fast, accurate postal address validation"
     externalDocs:
       description: API documentation
-      url: https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466db17f3b80a18a63dced29d4cfb5
+      url: https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-api
 paths:
   /swiftlookup/:
     get:
@@ -69,13 +69,9 @@ paths:
         - Address Autocomplete API
       summary: Search for address, what3words, or postcode
       description: |
-        This endpoint supports multiple search types through the `searchFor` parameter.
-
-        ### Usage Modes:
-        - `Search for Address` — traditional address autocomplete
-        - `Search for what3words` — search by a what3words address
-        - `Search for Postcode` — lookup by postcode 
-      operationId: swiftlooup
+        This endpoint provides flexible and intelligent search capabilities for addresses, what3words locations, postcodes, and places. 
+        By leveraging the `searchFor` parameter, you can tailor the search to specific types of location data, enabling real-time autocomplete and lookup functionality for a wide range of use cases, from address validation to location-based services. 
+      operationId: swiftlookup
       parameters:
         - name: key
           required: true
@@ -91,7 +87,11 @@ paths:
           schema:
             type: string
             examples: 
-              - filled.count.s
+              - filled.count.soap
+              - 65 Alfred Road, London
+              - W2 5EU
+              - 51.521198,-0.196309
+              - "///filled.count.soap"
           description: A full or partial search term such as a postcode, street, city or what3words address.
         - name: biasTowards
           in: query
@@ -101,8 +101,7 @@ paths:
             examples: 
               - filled.count.soap
           description: |
-            The API will prioritise results near your approximate location (determined by your IP address) if this parameter is not provided. 
-            Either a what3words location (only if what3words has been enabled on this API key, in the format "///word1.word2.word3") or a WGS84 coordinate (in the format "latitude,longitude")
+            Bias results towards a location. Accepts a what3words address (`///word1.word2.word3` - MUST use the `///`) or coordinates (`latitude,longitude`). If not set, results are biased by IP location.
         - name: container
           in: query
           required: false
@@ -110,12 +109,14 @@ paths:
             type: string
             examples: 
               - "V1;65|ALFRED Road|LONDON|W2;51.521198;-0.196309"
-          description: "Restricts the search to a specific container (e.g., traditional address, postcode, coordinates)."
+          description: "Restricts the search to a specific container for example traditional address, postcode, coordinates (e.g. `V1;65|ALFRED Road|LONDON|W2;51.521198;-0.196309`)."
         - name: searchFor
           in: query
           required: false
           schema:
             type: string
+            default: "address,what3words,place"
+            enum: [address, what3words, place, road, transit]
             examples: 
               - "what3words,address,place"
           description: |
@@ -126,12 +127,13 @@ paths:
             - `place` for postcode
             - `road` for roads
             - `transit` for public transport
-            `place`, `road`, `transit` are types are hierarchical, e.g. providing "transit" includes everything in the transit category, "transit.airport" only returns airports and "transit.airport.large" only returns the largest airports. View the table linked to this page.
+            `place`, `road`, `transit` are types are hierarchical, e.g. providing `transit` includes everything in the transit category, `transit.airport` only returns airports and `transit.airport.large` only returns the largest airports. View the table linked to this page.
         - name: countries
           in: query
           required: false
           schema:
             type: string
+            default: "gb"
             examples: 
               - gb
           description: |
@@ -143,13 +145,15 @@ paths:
           schema:
             type: string
             examples: 
-              - -1
+              - 5
           description: Limits the search to a maximum distance (in meters) from the biasTowards location.
         - name: maxResults
           in: query
           required: false
           schema:
             type: string
+            default: "5"
+            enum: [1, 2, 3, 4, 5, 10, 20, 50, 100]
             examples: 
               - 5
           description: |
@@ -167,7 +171,7 @@ paths:
               - -1
           description: |
             Index for populating the autocomplete field.
-            Used to obtain detailed information about a result in the response array. For example, to obtain full information for the first record, pass populatedIndex=0, or for the second, pass `populatedIndex=1` and so on.
+            Used to obtain detailed information about a result in the response array. For example, to obtain full information for the first record, pass `populatedIndex=0`, or for the second, pass `populatedIndex=1` and so on.
         - name: populateLineCount
           in: query
           required: false
@@ -181,6 +185,8 @@ paths:
           required: false
           schema:
             type: string
+            default: "metric"
+            enum: [metric, imperial, km, feet, miles]
             examples: 
               - metric
           description: |
@@ -285,28 +291,6 @@ paths:
                       type: what3words
                       isContainer: true
                       container: "V1;65|ALFRED Road|LONDON|W2;51.521198;-0.196309"
-                ListAddresses:
-                  summary: List the addresses per what3words search
-                  value:
-                    - primary:
-                        text: "Blaiz, 65 Alfred Rd"
-                        highlights: [7, 8, 10, 15, 17, 18]
-                      secondary:
-                        text: "London, W2 5EU"
-                        highlights: [0, 5, 8, 9]
-                      type: address.business
-                      isContainer: false
-                      countryCode: "GB"
-                DetailAddress:
-                  summary: Select an address from a what3words search
-                  value:
-                    - primary:
-                        text: "Blaiz, 65 Alfred Rd"
-                        highlights: [7, 8, 10, 15, 17, 18]
-                      populatedRecord:
-                        lines: ["Blaiz Ltd", "65 Alfred Road", "London", "W2 5EU", "United Kingdom"]
-                        label: "Blaiz Ltd\n65 Alfred Road\nLondon\nW2 5EU\nUnited Kingdom"
-                      countryCode: "GB"
         400:
           description: Bad Request - Multiple reasons
           content:

@@ -20,38 +20,32 @@ The **Address Autocomplete API** by Swiftcomplete is a RESTful API that provides
     - Usage plans vary (free vs. paid)
     - Free trials are limited and return a 403 when expired
     - Rate limits and quotas per plan are enforced; exceeding them leads to error responses (likely 429)
-- **Live Demo:** [https://www.swiftcomplete.com/](https://www.swiftcomplete.com/)
+- **Live Demo:** [https://what3words.com/swiftcomplete](https://what3words.com/swiftcomplete)
 - **Pricing Details:** For pricing details visit:
-  👉 **[Pricing Page](https://www.swiftcomplete.com/#pricing)**
+  👉 **[Pricing Page](https://what3words.com/swiftcomplete)**
 
 ---
 
 ## 📚 API Documentation
 
-- [API Overview](https://www.docs.swiftcomplete.com/openapi.yaml)
-- [LLMs Text](https://www.docs.swiftcomplete.com/llms.txt)
-- [LLMs Full Text](https://www.docs.swiftcomplete.com/llms-full.txt)
-- [Postman collection](https://www.docs.swiftcomplete.com/swiftcomplete.postman_collection.json)
+- [OpenAPI documentation](https://www.docs.swiftcomplete.com/openapi.yaml) - Swiftcomplete OpenAPI in Swagger UI
+- [LLMs API Text Reference](https://www.docs.swiftcomplete.com/llms.txt) – Documentation for integrating with LLMs
+- [LLMs Full API Documentation](https://www.docs.swiftcomplete.com/llms-full.txt) – Complete, detailed API reference for large language models
+- [Download Postman Collection (JSON)](https://www.docs.swiftcomplete.com/swiftcomplete.postman_collection.json)
 
 ### Plugins
 Add address autocomplete to e-commerce platforms.
 
-- [Swiftcomplete Address Autocomplete - Shopify](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-shopify) – Implement address autocomplete in Shopify stores
-  _Not yet live on developer.what3words.com.
+- [Swiftcomplete Address Autocomplete - Shopify Plus](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-shopify) – Implement address autocomplete in Shopify stores
 - [Swiftcomplete Address Autocomplete - WooCommerce](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-woocommerce) – Implement address autocomplete in WooCommerce stores  
-  _See also [current documentation](https://swiftcomplete.notion.site/WooCommerce-plugin-for-Swiftcomplete-1a466db17f3b8018bc4ce65f85f6c852)_
 - [Swiftcomplete Address Autocomplete - BigCommerce](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-bigcommerce) – Implement address autocomplete in BigCommerce stores  
-  _See also [current documentation](https://swiftcomplete.notion.site/BigCommerce-Integration-for-Swiftcomplete-1d666db17f3b80e9bfceef1d64bea34d)_
-- [Adding Swiftcomplete Address Autocomplete to E-commerce Checkout](https://developer.what3words.com/tutorial/adding-swiftcomplete-address-autocomplete-to-ecommerce-checkout/) – General guide for adding address autocomplete to e-commerce platforms  
-  _Not yet live on developer.what3words.com. See [current documentation](https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466db17f3b80a18a63dced29d4cfb5)_
 - [Swiftcomplete Address Autocomplete - Ecwid](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-ecwid) – Implement address autocomplete in Ecwid stores  
-  _See also [current documentation](https://swiftcomplete.notion.site/Ecwid-Integration-for-Swiftcomplete-1f466db17f3b800a95ffef566d22b0f4)_
+- [Adding Swiftcomplete Address Autocomplete to E-commerce Checkout](https://developer.what3words.com/tutorial/adding-swiftcomplete-address-autocomplete-to-ecommerce-checkout/) – General guide for adding address autocomplete to e-commerce platforms  
 
 ### Web and Mobile Components
 Implement address autocomplete in custom applications.
 
 - [Swiftcomplete Address Autocomplete - JavaScript Component](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-javascript-component) – Add address autocomplete to websites and web applications  
-  _See also [current documentation](https://www.notion.so/Swiftcomplete-Swiftcomplete-API-JavaScript-1a066db17f3b8076bc67f00c1ca24742?pvs=4)_
 - [Swiftcomplete Address Autocomplete - iOS Component](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-ios-component) – Add address autocomplete to iOS applications
   _Not yet live on developer.what3words.com.  
 - [Swiftcomplete Address Autocomplete - Android Component](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-android) – Add address autocomplete to Android applications
@@ -132,27 +126,33 @@ Direct API access for address autocomplete.
 
 # UI Components
 
-Source: [https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466db17f3b80a18a63dced29d4cfb5](https://www.notion.so/1a466db17f3b80a18a63dced29d4cfb5?pvs=21)
+Source: [Swiftcomplete Address Autocomplete API](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-api
 
 ## 1. JavaScript Searchbox & Autocomplete
 
-- **URL**: [https://swiftcomplete.notion.site](https://swiftcomplete.notion.site)
+- **URL**: [Swiftcomplete Address Autocomplete - JavaScript Component](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-javascript-component) 
 - **Description**: Learn how to integrate the Swiftcomplete Address Autocomplete JavaScript component into a website. Covers setting up the API key, initialising the control, setting parameters such as `searchFor`, `populateLineFormat`, and handling custom events like `swiftcomplete:swiftlookup:selected`. Useful for developers integrating location search into web platforms.
 
 ## 2. WooCommerce Address Autocomplete
 
-- **URL**: [https://swiftcomplete.notion.site/WooCommerce-plugin-for-Swiftcomplete-1a466db17f3b8018bc4ce65f85f6c852](https://swiftcomplete.notion.site/WooCommerce-plugin-for-Swiftcomplete-1a466db17f3b8018bc4ce65f85f6c852)
-- **Description**: A step-by-step guide to integrating Swiftcomplete address autocomplete into WooCommerce checkout forms. Includes plugin setup, JavaScript binding, overriding default WooCommerce address fields, and customising `lineFormat` to include what3words if enabled.
+- **URL**: [Swiftcomplete Address Autocomplete - WooCommerce](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-woocommerce) 
+- **Description**: A step-by-step guide to integrating Swiftcomplete Address Autocomplete into WooCommerce checkout forms. Includes plugin setup, JavaScript binding, overriding default WooCommerce address fields, and customising `lineFormat` to include what3words if enabled.
 
 ## 3. BigCommerce Integration for Address Autocomplete
 
-- **URL**: [https://swiftcomplete.notion.site/BigCommerce-Integration-for-Swiftcomplete-12345abcdefg](https://swiftcomplete.notion.site/BigCommerce-Integration-for-Swiftcomplete-12345abcdefg)
-- **Description**: Walkthrough for adding Swiftcomplete to BigCommerce checkout and account pages. Demonstrates how to insert the Address Autocomplete JavaScript component and ensure address lines are populated using Swiftcomplete’s API. It also explains how to bias results using the customer’s geolocation and apply component-level configuration.
+- **URL**: [Swiftcomplete Address Autocomplete - BigCommerce](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-bigcommerce)
+- **Description**: Walkthrough for adding Swiftcomplete to BigCommerce checkout and Order pages. Demonstrates how to insert the Address Autocomplete JavaScript component and ensure address lines are populated using Swiftcomplete’s API. 
+
+## 4. Shopify Plus App for Address Autocomplete
+
+- **URL**: [Swiftcomplete Address Autocomplete - Shopify Plus](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-shopify)
+- **Description**: Walkthrough for adding Swiftcomplete to Shopify Plus checkout and Order pages. Demonstrates how to insert the Address Autocomplete app and ensure address lines are populated using Swiftcomplete’s API. 
+
 
 ## Tools & Guides
 
-- [Integration Guide (Notion)](https://www.notion.so/1a466db17f3b80a18a63dced29d4cfb5?pvs=21)
-- [Support](mailto:support@swiftcomplete.com)
+- [Integration Guide]https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-javascript-component)
+- [Support](mailto:support@what3words.com)
 
 ---
 
@@ -160,7 +160,7 @@ Source: [https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466d
 
 ### 1. Swiftcomplete Address Autocomplete API (JavaScript)
 
-- 📘 [Docs](https://swiftcomplete.notion.site/)
+- 📘 [Docs](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-javascript-component)
 - 🧠 Description: The Address Autocomplete API provides realtime address suggestions as you type, eliminating typos and mistakes and reducing the time it takes to find accurate postal addresses.
 
 ### Data Coverage
@@ -222,7 +222,7 @@ The script initialises Address Autocomplete on your existing textbox, restricts 
 				        promptText: 'Type your address, what3words, or postcode',
 			          noResultsText: 'No addresses found - click here to enter your address manually',
 		            manualEntryText: 'Can\'t find your address? Click here to enter manually',
-                searchFor: "what3words, address"
+                searchFor: "what3words, address",
                 scrollToFieldOnFocus: true,
                 populateLineFormat: [
                 { field: document.getElementById("companyInput"), format: "Company" },
@@ -325,11 +325,11 @@ Integrate with business logic:
 
 ### Troubleshooting
 
-Need help? Contact: [support@swiftcomplete.com](mailto:support@swiftcomplete.com)
+Need help? Contact: [support@what3words.com](mailto:support@what3words.com)
 
 ### 2. Swiftcomplete: WooCommerce Plugin for Address Autocomplete
 
-- 📘 [Docs](https://www.notion.so/1a466db17f3b8018bc4ce65f85f6c852?pvs=21)
+- 📘 [Docs](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-woocommerce)
 - 🧠 Description: The Swiftcomplete Address Autocomplete Plugin for WooCommerce adds real-time address autocomplete to billing and shipping fields during checkout. This integration helps capture accurate postal addresses, reduces errors, enhances user experience, and improves conversion rates.
 
 ---
@@ -417,7 +417,7 @@ If you're experiencing issues with plugin setup or address lookups:
 - Verify that the plugin is active and properly installed.
 
 Contact support:
-📩 [support@swiftcomplete.com](mailto:support@swiftcomplete.com)
+📩 [support@what3words.com](mailto:support@what3words.com)
 
 ---
 
@@ -437,7 +437,7 @@ Contact support:
 
 ### 3. Swiftcomplete: BigCommerce Integration for Swiftcomplete
 
-- 📘 [Docs](https://www.notion.so/1d666db17f3b80e9bfceef1d64bea34d?pvs=21)
+- 📘 [Docs](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-bigcommerce)
 - 🧠 Description: The Swiftcomplete Address Autocomplete Plugin for BigCommerce integrates address autocomplete into billing and shipping fields in the checkout experience. It improves form accuracy, accelerates address entry, and supports what3words integration.
 
 ---
@@ -481,7 +481,7 @@ Paste the Address Autocomplete script snippet into the Script Contents field. Th
 - Optionally including a `what3words` custom field (if added in admin)
 
 ```jsx
-<script src="<https://unpkg.com/react-trigger-change/dist/react-trigger-change.js>"></script>
+<script src="https://unpkg.com/react-trigger-change/dist/react-trigger-change.js"></script>
 <script>
 	// BigCommerce SwiftComplete Integration
 	// This script integrates the SwiftComplete address finder into the BigCommerce checkout process.
@@ -491,20 +491,20 @@ Paste the Address Autocomplete script snippet into the Script Contents field. Th
 	// and if found, creates the address finder input field. It then initializes the SwiftComplete functionality.
 	
 	// Variables
-  loadedTimeout = null;
-  *#########################################
+  let loadedTimeout = null;
+  // #########################################
   Insert your API key here to run the demo:
   #########################################*/
   var SWIFTCOMPLETE_API_KEY = "INSERT_KEY_HERE";
   var SWIFTCOMPLETE_SEARCH_FIELD_ID = "INSERT_TEXT_FIELD_ID_HERE";
 
-    !function (e, t, c) {
+    (!function (e, t, c) {
     e.swiftcomplete = e.swiftcomplete || {};
     var s = t.createElement("script");
     s.async = !0, s.src = c;
     var r = t.getElementsByTagName("script")[0];
     r.parentNode.insertBefore(s, r)
-        }(window, document, "https://assets.swiftcomplete.com/js/swiftlookup.js");
+        })(window, document, "https://assets.swiftcomplete.com/js/swiftlookup.js");
 
 window.addEventListener('load', loadSwiftcompleteBigCommerceIntegration);
 
@@ -669,7 +669,7 @@ If `what3words` is enabled, it will also be filled with a valid 3-word address.
 - **Fields not populating?** Check `input` element `IDs` match the script configuration.
 - **what3words not populating?** Ensure the custom text field exists and has a name that includes `what3words`.
 
-For help, contact: [support@swiftcomplete.com](mailto:support@swiftcomplete.com)
+For help, contact: [support@what3words.com](mailto:support@what3words.com)
 
 ---
 
@@ -688,9 +688,9 @@ For help, contact: [support@swiftcomplete.com](mailto:support@swiftcomplete.com)
 
 ## Support
 
-📬 [support@swiftcomplete.com](mailto:support@swiftcomplete.com)
+📬 [support@what3words.com](mailto:support@what3words.com)
 
-📘 [Integration Docs Overview](https://www.notion.so/1a466db17f3b80a18a63dced29d4cfb5?pvs=21)
+📘 [Integration Docs Overview](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-api)
 
 ## List of prompt to ask an AI tool for the Swiftcomplete integration:
 

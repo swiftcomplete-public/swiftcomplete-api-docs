@@ -6,30 +6,24 @@ The **Address Autocomplete API** provides fast, accurate postal address autocomp
 
 ## 📚 API Documentation
 
-- [API Overview](https://www.docs.swiftcomplete.com/openapi.yaml)
-- [LLMs Text](https://www.docs.swiftcomplete.com/llms.txt)
-- [LLMs Full Text](https://www.docs.swiftcomplete.com/llms-full.txt)
-- [Postman collection](https://www.docs.swiftcomplete.com/swiftcomplete.postman_collection.json)
+- [OpenAPI documentation](https://www.docs.swiftcomplete.com/openapi.yaml) - Swiftcomplete OpenAPI in Swagger UI
+- [LLMs API Text Reference](https://www.docs.swiftcomplete.com/llms.txt) – Documentation for integrating with LLMs
+- [LLMs Full API Documentation](https://www.docs.swiftcomplete.com/llms-full.txt) – Complete, detailed API reference for large language models
+- [Download Postman Collection (JSON)](https://www.docs.swiftcomplete.com/swiftcomplete.postman_collection.json)
 
 ### Plugins
 Add address autocomplete to e-commerce platforms.
 
 - [Swiftcomplete Address Autocomplete - Shopify](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-shopify) – Implement address autocomplete in Shopify stores
-  _Not yet live on developer.what3words.com.
 - [Swiftcomplete Address Autocomplete - WooCommerce](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-woocommerce) – Implement address autocomplete in WooCommerce stores  
-  _See also [current documentation](https://swiftcomplete.notion.site/WooCommerce-plugin-for-Swiftcomplete-1a466db17f3b8018bc4ce65f85f6c852)_
 - [Swiftcomplete Address Autocomplete - BigCommerce](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-bigcommerce) – Implement address autocomplete in BigCommerce stores  
-  _See also [current documentation](https://swiftcomplete.notion.site/BigCommerce-Integration-for-Swiftcomplete-1d666db17f3b80e9bfceef1d64bea34d)_
-- [Adding Swiftcomplete Address Autocomplete to E-commerce Checkout](https://developer.what3words.com/tutorial/adding-swiftcomplete-address-autocomplete-to-ecommerce-checkout/) – General guide for adding address autocomplete to e-commerce platforms  
-  _Not yet live on developer.what3words.com. See [current documentation](https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466db17f3b80a18a63dced29d4cfb5)_
 - [Swiftcomplete Address Autocomplete - Ecwid](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-ecwid) – Implement address autocomplete in Ecwid stores  
-  _See also [current documentation](https://swiftcomplete.notion.site/Ecwid-Integration-for-Swiftcomplete-1f466db17f3b800a95ffef566d22b0f4)_
+- [Adding Swiftcomplete Address Autocomplete to E-commerce Checkout](https://developer.what3words.com/tutorial/adding-swiftcomplete-address-autocomplete-to-ecommerce-checkout/) – General guide for adding address autocomplete to e-commerce platforms  
 
 ### Web and Mobile Components
 Implement address autocomplete in custom applications.
 
 - [Swiftcomplete Address Autocomplete - JavaScript Component](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-javascript-component) – Add address autocomplete to websites and web applications  
-  _See also [current documentation](https://www.notion.so/Swiftcomplete-Swiftcomplete-API-JavaScript-1a066db17f3b8076bc67f00c1ca24742?pvs=4)_
 - [Swiftcomplete Address Autocomplete - iOS Component](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-ios-component) – Add address autocomplete to iOS applications
   _Not yet live on developer.what3words.com.  
 - [Swiftcomplete Address Autocomplete - Android Component](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-android) – Add address autocomplete to Android applications
@@ -87,8 +81,8 @@ Direct API access for address autocomplete.
 
 ## 📖 Tools & Guides
 
-- [Integration Guide](https://swiftcomplete.notion.site/Swiftcomplete-Integration-Docs-1a466db17f3b80a18a63dced29d4cfb5)
-- [Support](mailto:support@swiftcomplete.com)
+- [Integration Guide](https://developer.what3words.com/tutorial/swiftcomplete-address-autocomplete-javascript-component)
+- [Support](mailto:support@what3words.com)
 
 ---
 
@@ -107,10 +101,10 @@ Direct API access for address autocomplete.
 ## 🌟 Demo and Pricing
 
 - A live demo of the Address Autocomplete API is available at:  
-  👉 **[www.swiftcomplete.com](https://www.swiftcomplete.com)**
+  👉 **[www.swiftcomplete.com](https://what3words.com/swiftcomplete)**
 
 - For pricing details, visit:  
-  👉 **[Pricing Page](https://www.swiftcomplete.com/#pricing)**
+  👉 **[Pricing Page](https://what3words.com/swiftcomplete)**
 
 ---
 
